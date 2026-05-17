@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
@@ -8,35 +9,57 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#F5F4EF",
-        surface: "#FFFFFF",
-        panel: "#4A5C2A",
-        primary: {
-          DEFAULT: "#7D8263",
-          foreground: "#FFFFFF",
-          dark: "#6B6F55",
-          light: "#9A9F81",
+        background: {
+          DEFAULT: "hsl(var(--bg-primary))",
+          secondary: "hsl(var(--bg-secondary))",
+          sidebar: "hsl(var(--bg-sidebar))",
+          card: "hsl(var(--bg-card))",
         },
-        accent: {
-          DEFAULT: "#8B6914",
-          foreground: "#FFFFFF",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          dark: "hsl(var(--primary-dark))",
+          light: "hsl(var(--primary-light))",
+          foreground: "hsl(var(--text-on-primary))",
         },
         brand: {
-          brown: "#6B4C2A",
-          warm: "#8B6914",
+          brown: "hsl(var(--brand-brown))",
+          warm: "hsl(var(--brand-warm))",
         },
-        muted: "#6B7280",
-        success: "#4A7C3F",
-        warning: "#D97706",
-        danger: "#DC2626",
-        info: "#2563EB",
+        text: {
+          DEFAULT: "hsl(var(--text-primary))",
+          secondary: "hsl(var(--text-secondary))",
+          muted: "hsl(var(--text-muted))",
+          "on-primary": "hsl(var(--text-on-primary))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+        },
+        danger: {
+          DEFAULT: "hsl(var(--danger))",
+        },
+        info: {
+          DEFAULT: "hsl(var(--info))",
+        },
+        border: {
+          DEFAULT: "hsl(var(--border))",
+          light: "hsl(var(--border-light))",
+        },
       },
       boxShadow: {
-        soft: "0 2px 8px rgba(0,0,0,0.08)",
-        card: "0 4px 16px rgba(0,0,0,0.06)",
+        soft: "0 20px 45px rgba(15, 23, 42, 0.15)",
+        card: "0 4px 16px rgba(0, 0, 0, 0.06)",
+        "dark-card": "0 4px 16px rgba(0, 0, 0, 0.3)",
       },
       borderRadius: {
-        xl: "1.25rem",
+        xl: "var(--radius-xl)",
+        lg: "var(--radius-lg)",
+        DEFAULT: "var(--radius)",
+      },
+      fontFamily: {
+        // Add your fonts here if needed
       },
     },
   },
