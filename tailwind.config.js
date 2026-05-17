@@ -8,24 +8,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#0D0F2B",
-        surface: "#12154A",
-        panel: "#1B204F",
+        background: "#F5F4EF",
+        surface: "#FFFFFF",
+        panel: "#4A5C2A",
         primary: {
-          DEFAULT: "#4FC3F7",
-          foreground: "#0F172A",
+          DEFAULT: "#7D8263",
+          foreground: "#FFFFFF",
+          dark: "#6B6F55",
+          light: "#9A9F81",
         },
         accent: {
-          DEFAULT: "#5C6BC0",
-          foreground: "#EFF6FF",
+          DEFAULT: "#8B6914",
+          foreground: "#FFFFFF",
         },
-        muted: "#94A3B8",
-        success: "#34D399",
-        warning: "#F59E0B",
-        danger: "#EF4444",
+        brand: {
+          brown: "#6B4C2A",
+          warm: "#8B6914",
+        },
+        muted: "#6B7280",
+        success: "#4A7C3F",
+        warning: "#D97706",
+        danger: "#DC2626",
+        info: "#2563EB",
       },
       boxShadow: {
-        soft: "0 20px 45px rgba(15, 23, 42, 0.15)",
+        soft: "0 2px 8px rgba(0,0,0,0.08)",
+        card: "0 4px 16px rgba(0,0,0,0.06)",
       },
       borderRadius: {
         xl: "1.25rem",

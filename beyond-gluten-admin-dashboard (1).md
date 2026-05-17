@@ -214,9 +214,9 @@
   --bg-card: #FFFFFF;          /* بطاقات بيضاء */
 
   /* الألوان الرئيسية */
-  --primary: #5C6B3A;          /* الأخضر الزيتوني — اللون الرئيسي للأزرار */
-  --primary-dark: #3D4A22;     /* أخضر أداكن — hover states */
-  --primary-light: #7A8F4E;    /* أخضر فاتح — secondary elements */
+  --primary: #7D8263;          /* اللون الرئيسي */
+  --primary-dark: #6B6F55;     /* ظل أغمق للـ hover */
+  --primary-light: #9A9F81;    /* لون أخف للعناصر الثانوية */
 
   /* Branding */
   --brand-brown: #6B4C2A;      /* البني الذهبي — Logo / headings */
