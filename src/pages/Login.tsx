@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { Form } from "@/components/ui/form"
 import CustomFormField, { FormFieldType } from "@/components/shared/inputs/CustomFormField"
 import { images } from "@/constants/images"
-import { LogIn, Mail, Lock } from "lucide-react"
+import { LogIn, Mail, Lock } from "lucide-react"  
 import { SubmitButton } from "@/components/shared/buttons/SubmitButton"
 import { loginFormSchema, LoginFormValues } from "@/validations/auth.validation"
 
@@ -24,6 +24,7 @@ const Login: React.FC = () => {
   const handleSubmit = async (data: LoginFormValues) => {
     setIsLoading(true)
     try {
+      
       navigate("/", { replace: true })
     } catch (err) {
       form.setError("root", {
@@ -35,95 +36,78 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col md:flex-row">
+    <div className="relative flex max-h-screen w-full flex-col md:flex-row">
       {/* Left Panel: Form */}
-      <div className="flex w-full flex-col items-center justify-center bg-gradient-to-br from-background via-background to-primary/5 p-8 md:w-1/2">
+      <div className="flex w-full flex-col items-center justify-center bg-background p-8 md:w-1/2">
         <div className="w-full max-w-md">
-          <div className="flex flex-col gap-8">
-            {/* Logo with enhanced styling */}
-            <div className="mb-2 flex justify-center">
-              <div className="relative">
-                <img 
-                  src={images.logo} 
-                  width={200} 
-                  height={176} 
-                  alt="Logo" 
-                  className="relative rounded-2xl transition-transform duration-300 hover:scale-105"
-                />
-              </div>
+          <div className="flex flex-col gap-6">
+            <div className="mb-4 mx-auto">
+              <img src={images.logo} width={250} height={220} alt="Logo" />
             </div>
             
-            {/* Welcome Section with decorative elements */}
-            <div className="relative text-center">
-              <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-transparent">
-                Welcome Back
+            <div>
+              <h1 className="text-2xl font-semibold tracking-tight text-text-primary">
+                Login
               </h1>
-              <p className="mt-2 text-sm text-text-secondary">
-                Sign in to manage your gluten-free marketplace
+              <p className="text-sm text-text-secondary">
+                Welcome back! Please enter your details to login
               </p>
             </div>
+
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-5">
-                <div className="space-y-4">
+              <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+                <div>
                   <CustomFormField
                     fieldType={FormFieldType.EMAIL}
                     control={form.control}
                     name="email"
-                    label="Email Address"
-                    placeholder="admin@beyondgluten.com"
+                    label="Email"
+                    placeholder="name@example.com"
                     disabled={isLoading}
                     leftIcon={Mail}  
                     iconPosition="left"
                   />
+                </div>
 
+                <div>
                   <CustomFormField
                     fieldType={FormFieldType.PASSWORD}
                     control={form.control}
                     name="password"
                     label="Password"
-                    placeholder="Enter your password"
+                    placeholder="••••••••••••"
                     disabled={isLoading}
                     leftIcon={Lock}  
                     iconPosition="left"
                   />
                 </div>
 
+                {form.formState.errors.root && (
+                  <div className="rounded-lg border border-rose-500/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-200 text-center">
+                    {form.formState.errors.root.message}
+                  </div>
+                )}
 
                 <SubmitButton 
                   isLoading={isLoading}
-                  text="Sign In"
-                  loadingText="Authenticating..."
+                  text="Login"
+                  loadingText="Logging in..."
                   icon={<LogIn className="h-4 w-4" />}
                 />
-
               </form>
             </Form>
-
-            {/* Footer */}
-            <p className="text-center text-xs text-text-muted">
-              © 2026 Beyond Gluten. All rights reserved.
-            </p>
           </div>
         </div>
       </div>
 
-   <div className="relative hidden w-1/2 md:block">
-  <img
-    src={images.login}
-    alt="Beyond Gluten products and ingredients"
-    className="h-screen w-full "
-  />
-  
-  {/* Powered by badge in bottom right corner */}
-  <div className="absolute bottom-1 -mb-6 right-4 flex items-center gap-2 ">
-    <span className="text-white text-sm font-medium">Powered by</span>
-    <img 
-      src={images.futureX}  
-      alt="X Logo" 
-      className="h-24 w-24"
-    />
-  </div>
-</div>
+      {/* Right Panel: Image */}
+      <div className="relative hidden w-1/2 md:block">
+        <img
+          src={"https://images.unsplash.com/photo-1505253758473-96b7015fcd40?q=80&w=2070&auto=format&fit=crop"}
+          alt="Beyond Gluten products and ingredients"
+          className="h-screen w-full object-cover "
+        />
+      </div>
     </div>
   )
 }
