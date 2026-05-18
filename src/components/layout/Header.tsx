@@ -1,0 +1,67 @@
+import React from "react"
+import { Bell, User, LogOut, Menu, X } from "lucide-react"
+import { ModeToggle } from "../mode-toggle"
+import LanguageSwitcher from "../language-switcher"
+
+interface HeaderProps {
+  onLogout: () => void
+  onMenuToggle?: () => void
+  isMobileMenuOpen?: boolean
+}
+
+const Header: React.FC<HeaderProps> = ({ onLogout, onMenuToggle, isMobileMenuOpen }) => {
+  return (
+    <header className="sticky top-0 z-10 border-b border-border bg-background-card px-4 sm:px-6 py-4 shadow-sm">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={onMenuToggle}
+            className="lg:hidden rounded-lg p-2 text-text-secondary transition-colors hover:bg-background-secondary"
+          >
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Notifications */}
+          <button className="relative rounded-full p-2 text-text-secondary transition-colors hover:bg-background-secondary">
+            <Bell className="h-5 w-5" />
+            <span className="absolute right-1 top-1 flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+            </span>
+          </button>
+
+          {/* User Menu - hide on small mobile */}
+          <div className="hidden sm:flex items-center gap-3 border-l border-border pl-3">
+            <div className="text-right">
+              <p className="text-sm font-medium text-text">Admin User</p>
+              <p className="text-xs text-text-secondary">Administrator</p>
+            </div>
+            <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center">
+              <User className="h-4 w-4 text-white" />
+            </div>
+          </div>
+
+          {/* Dark Mode Toggle */}
+          <ModeToggle />
+
+          {/* Language Switcher */}
+          <LanguageSwitcher />
+
+          {/* Logout Button - hide on small mobile */}
+          <button
+            onClick={onLogout}
+            className="hidden sm:flex rounded-xl border border-border bg-background-card px-4 py-2 text-sm font-medium text-text transition hover:bg-background-secondary"
+          >
+            <LogOut className="h-4 w-4 inline mr-2" />
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
+  )
+}
+
+export default Header

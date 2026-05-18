@@ -208,7 +208,6 @@
 ```css
 :root {
   /* الخلفيات */
-  --bg-primary: #F5F4EF;       /* خلفية رئيسية — كريمي/أبيض دافئ */
   --bg-secondary: #FFFFFF;     /* خلفية الكروت والـ Sidebar */
   --bg-sidebar: #4A5C2A;       /* Sidebar — أخضر زيتوني داكن */
   --bg-card: #FFFFFF;          /* بطاقات بيضاء */
