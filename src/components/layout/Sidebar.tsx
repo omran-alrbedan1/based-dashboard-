@@ -32,6 +32,7 @@ const menuItems: MenuItem[] = [
   { titleKey: "sidebar.menu.users", path: "/users", icon: Users },
   { titleKey: "sidebar.menu.vendors", path: "/vendors", icon: Store, notifs: 3 },
   { titleKey: "sidebar.menu.products", path: "/products", icon: ShoppingCart, notifs: 12 },
+  { titleKey: "sidebar.menu.productsApproval", path: "/products/approval", icon: ClipboardList },
   { titleKey: "sidebar.menu.orders", path: "/orders", icon: ClipboardList },
   { titleKey: "sidebar.menu.drivers", path: "/drivers", icon: Truck },
 ]

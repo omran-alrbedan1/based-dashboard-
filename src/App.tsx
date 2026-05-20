@@ -58,6 +58,7 @@ function App() {
           
           {/* Product Management */}
           <Route path="products" element={<ProductsList />} />
+          {/* Approval Subroutes */}
           <Route path="products/:id" element={<ProductReview />} />
           
           {/* Order Management */}
