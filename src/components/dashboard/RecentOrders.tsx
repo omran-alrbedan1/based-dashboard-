@@ -2,6 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { ArrowRight, CreditCard, User, Calendar, DollarSign } from 'lucide-react'
 import { recentOrders } from '@/data/dashboard.data'
+import type { OrderRow } from '@/types/dashboard.types'
 
 const STATUS_STYLES: Record<OrderRow['status'], string> = {
   delivered: 'bg-[#EAF3DE] text-[#27500A]',
