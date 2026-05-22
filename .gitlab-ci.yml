@@ -15,7 +15,7 @@ build_prod:
   tags:
     - server213
   rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
   script:
     - docker build -t beyond-gluten-frontend:${IMAGE_TAG} .
 
@@ -24,7 +24,7 @@ deploy_prod:
   tags:
     - server213
   rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
   script:
     - mkdir -p ${DEPLOY_DIR}
     - cp docker-compose.yml ${DEPLOY_DIR}/docker-compose.yml
