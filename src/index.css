@@ -1,0 +1,244 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary Colors */
+  --color-primary: #7A8F4E;
+  --color-primary-dark: #6B7E44;
+  --color-primary-light: #95A86A;
+  
+  /* Background Colors */
+  --color-background: #F5F4EF;
+  --color-background-secondary: #FFFFFF;
+  --color-background-sidebar: #4A5C2A;
+  --color-background-card: #FFFFFF;
+  
+  /* Secondary Colors */
+  --color-secondary: #7D8263;
+  --color-secondary-dark: #6B6F55;
+  --color-secondary-light: #9A9F81;
+
+  
+  /* Text Colors */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B7280;
+  --color-text-muted: #737373;
+  --color-text-on-primary: #FFFFFF;
+  --color-text-subtitle: rgba(0, 0, 0, 0.4);
+  
+  /* Border Colors */
+  --color-border: #E5E7EB;
+  --color-border-light: #F3F4F6;
+  
+  /* Focus Ring Colors */
+  --color-ring: var(--color-primary);
+  --color-ring-offset: var(--color-background-card);
+  
+  /* Shadows */
+  --shadow-soft: 0 20px 45px rgba(15, 23, 42, 0.15);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-dark-card: 0 4px 16px rgba(0, 0, 0, 0.3);
+  
+  /* Border Radius */
+  --radius-xl: 1rem;
+  --radius-lg: 0.75rem;
+  --radius-default: 0.5rem;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #7A8F4E, #95A86A);
+  --gradient-sidebar: linear-gradient(180deg, #4A5C2A, #3D4A22);
+}
+
+/* Default light theme */
+:root {
+  /* Background Colors - Light */
+  --color-background: #F5F4EF;
+  --color-background-secondary: #FFFFFF;
+  --color-background-sidebar: #4A5C2A;
+  --color-background-card: #FFFFFF;
+  
+  /* Primary Colors - Light */
+  --color-primary: #7A8F4E;
+  --color-primary-dark: #6B7E44;
+  --color-primary-light: #95A86A;
+  
+  /* Secondary Colors - Light */
+  --color-secondary: #7D8263;
+  --color-secondary-dark: #6B6F55;
+  --color-secondary-light: #9A9F81;
+  
+  /* Text Colors - Light */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B7280;
+  --color-text-muted: #737373;
+  --color-text-on-primary: #FFFFFF;
+  --color-text-subtitle: rgba(0, 0, 0, 0.4);
+  
+  /* Focus Ring Colors - Light */
+  --color-ring: #7A8F4E;
+  --color-ring-offset: #FFFFFF;
+  
+  /* Gradients - Light */
+  --gradient-primary: linear-gradient(135deg, #7A8F4E, #95A86A);
+  --gradient-sidebar: linear-gradient(180deg, #4A5C2A, #3D4A22);
+}
+
+.dark {
+  --color-background: #0D0F2B;
+  --color-background-secondary: #12154A;
+  --color-background-sidebar: #131641;
+  --color-background-card: #111635; 
+  
+  --color-primary: #9CBC5E;
+  --color-primary-dark: #87A651;
+  --color-primary-light: #B2D07A;
+  
+  /* Secondary Colors - Dark */
+  --color-secondary: #93977A;
+  --color-secondary-dark: #7C8065;
+  --color-secondary-light: #B1B498;
+
+  /* Text Colors - Dark */
+  --color-text-primary: #FAFAFA;
+  --color-text-secondary: #A0AEC0;
+  --color-text-muted: #8B9EB0;
+  --color-text-on-primary: #FFFFFF;
+  --color-text-subtitle: #D1D5DB;
+  
+  /* Border Colors - Dark */
+  --color-border: #1E224A;
+  --color-border-light: #191C42;
+  
+  /* Focus Ring Colors - Dark */
+  --color-ring: #9CBC5E;
+  --color-ring-offset: #111635;
+  
+  /* Gradients - Dark */
+  --gradient-primary: linear-gradient(135deg, #7A8F4E, #9CBC5A);
+  --gradient-sidebar: linear-gradient(180deg, #0E1138, #070926);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+  }
+
+  /* Focus ring styles for all interactive elements */
+  input:focus,
+  textarea:focus,
+  select:focus,
+  button:focus,
+  [contenteditable="true"]:focus {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  /* Remove default focus outline for mouse users, keep for keyboard */
+  input:focus:not(:focus-visible),
+  textarea:focus:not(:focus-visible),
+  select:focus:not(:focus-visible),
+  button:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  button:focus-visible,
+  [contenteditable="true"]:focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
+  }
+
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) transparent;
+  }
+}
+
+@layer utilities {
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-card {
+    background-color: var(--color-background-card);
+  }
+  
+  /* Subtitle text color utility */
+  .text-subtitle {
+    color: var(--color-text-subtitle);
+  }
+  
+  /* Focus ring utility classes */
+  .focus-ring-primary {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+  
+  .focus-ring-primary:focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+  
+  .focus-ring-offset-2 {
+    outline-offset: 2px;
+  }
+  
+  /* Ring offset background color utilities */
+  .ring-offset-background-card {
+    outline-offset-color: var(--color-background-card);
+  }
+  
+  /* View transitions */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+  
+  ::view-transition-old(root) {
+    z-index: 1;
+  }
+  
+  ::view-transition-new(root) {
+    z-index: 2;
+  }
+  
+  ::view-transition-new(root) {
+    animation: reveal 0.4s ease-in-out;
+  }
+  
+  @keyframes reveal {
+    from {
+      clip-path: circle(0% at 50% 50%);
+    }
+    to {
+      clip-path: circle(100% at 50% 50%);
+    }
+  }
+}

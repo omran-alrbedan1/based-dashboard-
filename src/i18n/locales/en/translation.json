@@ -1,0 +1,35 @@
+{
+  "sidebar": {
+    "sections": {
+      "main": "Main",
+      "content": "Content",
+      "community": "Community",
+      "reports": "Reports",
+      "account": "Account"
+    },
+    "menu": {
+      "dashboard": "Dashboard",
+      "users": "Users",
+      "vendors": "Vendors",
+      "products": "Products",
+      "orders": "Orders",
+      "drivers": "Drivers",
+      "articles": "Articles",
+      "videos": "Videos",
+      "guides": "Guides",
+      "posts": "Posts",
+      "reports": "Reports",
+      "sales": "Sales",
+      "delivery": "Delivery",
+      "settings": "Settings",
+      "help_support": "Help & Support"
+    },
+    "brand": {
+      "name": "Beyond Gluten",
+      "tagline": "Admin Dashboard"
+    },
+    "actions": {
+      "hide": "Hide"
+    }
+  }
+}

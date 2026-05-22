@@ -1,0 +1,36 @@
+{
+  "sidebar": {
+    "sections": {
+      "main": "الرئيسية",
+      "content": "المحتوى",
+      "community": "المجتمع",
+      "reports": "التقارير",
+      "account": "الحساب"
+    },
+    "menu": {
+      "dashboard": "لوحة التحكم",
+      "users": "المستخدمون",
+      "vendors": "البائعون",
+      "products": "المنتجات",
+      "orders": "الطلبات",
+      "productsApproval": "مراجعة المنتجات",
+      "drivers": "السائقون",
+      "articles": "المقالات",
+      "videos": "الفيديوهات",
+      "guides": "الأدلة",
+      "posts": "المنشورات",
+      "reports": "التقارير",
+      "sales": "المبيعات",
+      "delivery": "التوصيل",
+      "settings": "الإعدادات",
+      "help_support": "المساعدة والدعم"
+    },
+    "brand": {
+      "name": "بيوند جلوتن",
+      "tagline": "لوحة تحكم المشرف"
+    },
+    "actions": {
+      "hide": "إخفاء"
+    }
+  }
+}
