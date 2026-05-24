@@ -24,6 +24,8 @@
   import VendorReports from "./pages/Reports/VendorReports"
   import DeliveryReports from "./pages/Reports/DeliveryReports"
   import UserReports from "./pages/Reports/UserReports"
+import PaymentsMonitoringPage from "./pages/Payments/PaymentsMonitoringPage"
+import PaymentDetailsPage from "./pages/Payments/PaymentDetailsPage"
 
   interface PrivateRouteProps {
     children: React.ReactNode
@@ -58,7 +60,11 @@
             <Route path="admin/product-approval/:id" element={<ProductApprovalDetailsPage />} />
             {/* Approval Subroutes */}
             <Route path="products/:id" element={<ProductReview />} />
-            
+           
+            {/*Payments management   */}
+            <Route path="payments" element={<PaymentsMonitoringPage />} />
+            <Route path="payments/:id" element={<PaymentDetailsPage />} />
+           
             {/* Order Management */}
             <Route path="orders" element={<OrdersList />} />
             <Route path="orders" element={<OrdersList />} />
