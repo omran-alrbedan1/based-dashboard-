@@ -1,0 +1,81 @@
+import React, { useState } from "react"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import { CalendarIcon } from "lucide-react"
+import { format } from "date-fns"
+import { DateOption } from "@/types/customFormField.types"
+
+interface DatePickerFieldProps {
+  field: any
+  dateOptions?: DateOption
+  disabled?: boolean
+  inputClassName?: string
+}
+
+export const DatePickerField: React.FC<DatePickerFieldProps> = ({
+  field,
+  dateOptions,
+  disabled,
+  inputClassName,
+}) => {
+  const [open, setOpen] = useState(false)
+
+  const getDisabled = () => {
+    const disabledOptions: any = {}
+    
+    if (dateOptions?.minDate) {
+      disabledOptions.before = dateOptions.minDate
+    }
+    if (dateOptions?.maxDate) {
+      disabledOptions.after = dateOptions.maxDate
+    }
+    
+    const disabledDays = dateOptions?.disabledDays
+    if (disabledDays && disabledDays.length > 0) {
+      if (Object.keys(disabledOptions).length > 0) {
+        return [disabledOptions, ...disabledDays]
+      }
+      return disabledDays
+    }
+    
+    return Object.keys(disabledOptions).length > 0 ? disabledOptions : undefined
+  }
+
+  return (
+    <div className="relative">
+      <Button
+        type="button"
+        variant="outline"
+        className={cn(
+          "w-full justify-start text-left font-normal",
+          !field.value && "text-muted-foreground",
+          inputClassName
+        )}
+        disabled={disabled}
+        onClick={() => setOpen(!open)}
+      >
+        <CalendarIcon className="mr-2 h-4 w-4" />
+        {field.value ? (
+          format(new Date(field.value), dateOptions?.format || "PPP")
+        ) : (
+          dateOptions?.placeholder || "Pick a date"
+        )}
+      </Button>
+      {open && (
+        <div className="absolute top-full z-50 mt-1 bg-white border rounded-md shadow-lg">
+          <Calendar
+            mode="single"
+            selected={field.value ? new Date(field.value) : undefined}
+            onSelect={(date) => {
+              field.onChange(date)
+              setOpen(false)
+            }}
+            disabled={getDisabled()}
+            className="rounded-md"
+          />
+        </div>
+      )}
+    </div>
+  )
+}

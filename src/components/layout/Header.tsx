@@ -1,7 +1,7 @@
 import React from "react"
 import { Bell, User, LogOut, Menu, X } from "lucide-react"
 import { ModeToggle } from "../mode-toggle"
-import LanguageSwitcher from "../language-switcher"
+import LanguageSwitcher from "../shared/buttons/language-switcher"
 
 interface HeaderProps {
   onLogout: () => void

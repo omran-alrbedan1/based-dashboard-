@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
-import { getToken } from "./lib/auth"
 
 import MainLayout from "./components/layout/MainLayout"
 import Dashboard from "./pages/Dashboard"
@@ -10,6 +9,8 @@ import VendorsList from "./pages/Vendors/VendorsList"
 import VendorDetails from "./pages/Vendors/VendorDetails"
 import ProductsList from "./pages/Products/ProductsList"
 import ProductReview from "./pages/Products/ProductReview"
+import ProductApprovalPage from "./pages/ProductApproval/ProductApprovalPage"
+import ProductApprovalDetailsPage from "./pages/ProductApproval/ProductApprovalDetailsPage"
 import OrdersList from "./pages/Orders/OrdersList"
 import OrderDetails from "./pages/Orders/OrderDetails"
 import DriversList from "./pages/Drivers/DriversList"
@@ -29,11 +30,6 @@ interface PrivateRouteProps {
 }
 
 function PrivateRoute({ children }: PrivateRouteProps) {
-  const isAuthenticated = getToken()
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />
-  }
   return children
 }
 
@@ -58,6 +54,8 @@ function App() {
           
           {/* Product Management */}
           <Route path="products" element={<ProductsList />} />
+          <Route path="admin/product-approval" element={<ProductApprovalPage />} />
+          <Route path="admin/product-approval/:id" element={<ProductApprovalDetailsPage />} />
           {/* Approval Subroutes */}
           <Route path="products/:id" element={<ProductReview />} />
           

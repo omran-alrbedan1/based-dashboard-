@@ -12,12 +12,14 @@
   --color-background-sidebar: #4A5C2A;
   --color-background-card: #FFFFFF;
   
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #1A1A1A;
+  
   /* Secondary Colors */
   --color-secondary: #7D8263;
   --color-secondary-dark: #6B6F55;
   --color-secondary-light: #9A9F81;
 
-  
   /* Text Colors */
   --color-text-primary: #1A1A1A;
   --color-text-secondary: #6B7280;
@@ -56,6 +58,9 @@
   --color-background-sidebar: #4A5C2A;
   --color-background-card: #FFFFFF;
   
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #1A1A1A;
+  
   /* Primary Colors - Light */
   --color-primary: #7A8F4E;
   --color-primary-dark: #6B7E44;
@@ -73,6 +78,10 @@
   --color-text-on-primary: #FFFFFF;
   --color-text-subtitle: rgba(0, 0, 0, 0.4);
   
+  /* Border Colors - Light */
+  --color-border: #E5E7EB;
+  --color-border-light: #F3F4F6;
+  
   /* Focus Ring Colors - Light */
   --color-ring: #7A8F4E;
   --color-ring-offset: #FFFFFF;
@@ -87,6 +96,9 @@
   --color-background-secondary: #12154A;
   --color-background-sidebar: #131641;
   --color-background-card: #111635; 
+  
+  --color-popover: #111635;
+  --color-popover-foreground: #FAFAFA;
   
   --color-primary: #9CBC5E;
   --color-primary-dark: #87A651;
@@ -104,15 +116,12 @@
   --color-text-on-primary: #FFFFFF;
   --color-text-subtitle: #D1D5DB;
   
-  /* Border Colors - Dark */
   --color-border: #1E224A;
   --color-border-light: #191C42;
   
-  /* Focus Ring Colors - Dark */
   --color-ring: #9CBC5E;
   --color-ring-offset: #111635;
   
-  /* Gradients - Dark */
   --gradient-primary: linear-gradient(135deg, #7A8F4E, #9CBC5A);
   --gradient-sidebar: linear-gradient(180deg, #0E1138, #070926);
 }

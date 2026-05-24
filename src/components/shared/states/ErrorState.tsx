@@ -1,0 +1,259 @@
+import { cn } from "@/lib/utils"
+import { 
+  AlertCircle, 
+  RefreshCw, 
+  Home, 
+  WifiOff,
+  Server,
+  Lock,
+  FileWarning,
+  LucideIcon
+} from "lucide-react"
+import { Button } from "@/components/ui/button" 
+
+export type ErrorVariant = 
+  | "default" 
+  | "404" 
+  | "500" 
+  | "403" 
+  | "network" 
+  | "timeout"
+  | "custom"
+
+interface ErrorStateProps {
+  title?: string
+  description?: string
+  variant?: ErrorVariant
+  icon?: LucideIcon
+  image?: string
+  error?: Error | string
+  retry?: () => void
+  goHome?: () => void
+  action?: React.ReactNode
+  showDefaultActions?: boolean
+  className?: string
+  size?: "sm" | "md" | "lg"
+}
+
+const variantConfig: Record<ErrorVariant, { 
+  icon: LucideIcon; 
+  defaultTitle: string; 
+  defaultDescription: string;
+  color: string;
+  bgColor: string;
+  borderColor: string;
+}> = {
+  default: {
+    icon: AlertCircle,
+    defaultTitle: "Something went wrong",
+    defaultDescription: "An unexpected error occurred. Please try again.",
+    color: "text-red-600",
+    bgColor: "bg-red-50",
+    borderColor: "border-red-200"
+  },
+  "404": {
+    icon: FileWarning,
+    defaultTitle: "Page not found",
+    defaultDescription: "The page you're looking for doesn't exist or has been moved.",
+    color: "text-amber-600",
+    bgColor: "bg-amber-50",
+    borderColor: "border-amber-200"
+  },
+  "500": {
+    icon: Server,
+    defaultTitle: "Server error",
+    defaultDescription: "Our servers are having trouble. Please try again later.",
+    color: "text-red-600",
+    bgColor: "bg-red-50",
+    borderColor: "border-red-200"
+  },
+  "403": {
+    icon: Lock,
+    defaultTitle: "Access denied",
+    defaultDescription: "You don't have permission to access this resource.",
+    color: "text-orange-600",
+    bgColor: "bg-orange-50",
+    borderColor: "border-orange-200"
+  },
+  network: {
+    icon: WifiOff,
+    defaultTitle: "Network error",
+    defaultDescription: "Please check your internet connection and try again.",
+    color: "text-blue-600",
+    bgColor: "bg-blue-50",
+    borderColor: "border-blue-200"
+  },
+  timeout: {
+    icon: AlertCircle,
+    defaultTitle: "Request timeout",
+    defaultDescription: "The request took too long to complete. Please try again.",
+    color: "text-purple-600",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-200"
+  },
+  custom: {
+    icon: AlertCircle,
+    defaultTitle: "Error",
+    defaultDescription: "An error occurred.",
+    color: "text-gray-600",
+    bgColor: "bg-gray-50",
+    borderColor: "border-gray-200"
+  }
+}
+
+const sizeStyles = {
+  sm: {
+    container: "py-8 px-4",
+    iconWrapper: "w-16 h-16 mb-3",
+    icon: "w-8 h-8",
+    title: "text-base font-semibold mb-1",
+    description: "text-xs mb-4",
+    actions: "gap-2"
+  },
+  md: {
+    container: "py-12 px-6",
+    iconWrapper: "w-20 h-20 mb-4",
+    icon: "w-10 h-10",
+    title: "text-lg font-semibold mb-2",
+    description: "text-sm mb-6",
+    actions: "gap-3"
+  },
+  lg: {
+    container: "py-16 px-8",
+    iconWrapper: "w-24 h-24 mb-6",
+    icon: "w-12 h-12",
+    title: "text-2xl font-bold mb-3",
+    description: "text-base mb-8",
+    actions: "gap-4"
+  }
+}
+
+const ErrorState: React.FC<ErrorStateProps> = ({
+  title,
+  description,
+  variant = "default",
+  icon,
+  image,
+  error,
+  retry,
+  goHome,
+  action,
+  showDefaultActions = true,
+  className,
+  size = "md"
+}) => {
+  const config = variantConfig[variant]
+  const styles = sizeStyles[size]
+  
+  const IconComponent = icon || config.icon
+  const displayTitle = title || config.defaultTitle
+  const displayDescription = description || config.defaultDescription
+  
+  // Extract error message if error object is provided
+  const errorMessage = error instanceof Error ? error.message : error
+  
+  const handleRetry = () => {
+    if (retry) {
+      retry()
+    } else {
+      window.location.reload()
+    }
+  }
+  
+
+
+  return (
+    <div
+      className={cn(
+        "flex flex-col items-center justify-center text-center",
+        "rounded-lg border",
+        config.bgColor,
+        config.borderColor,
+        styles.container,
+        className
+      )}
+    >
+      {image ? (
+        <img 
+          src={image} 
+          alt={displayTitle}
+          className={cn("mb-4 object-contain", {
+            "w-32 h-32": size === "sm",
+            "w-40 h-40": size === "md",
+            "w-48 h-48": size === "lg"
+          })}
+        />
+      ) : (
+        <div className={cn(
+          "rounded-full flex items-center justify-center",
+          "bg-white shadow-sm",
+          styles.iconWrapper
+        )}>
+          <IconComponent className={cn(styles.icon, config.color)} />
+        </div>
+      )}
+      
+      <h2 className={cn(
+        styles.title,
+        "text-gray-900"
+      )}>
+        {displayTitle}
+      </h2>
+      
+      <p className={cn(
+        styles.description,
+        "text-gray-600 max-w-md"
+      )}>
+        {displayDescription}
+      </p>
+      
+      {errorMessage && variant === "default" && (
+        <div className={cn(
+          "mt-3 px-3 py-2 rounded-md bg-red-100 text-red-700",
+          "font-mono text-xs max-w-full overflow-auto",
+          size === "sm" ? "text-xs" : "text-sm"
+        )}>
+          {errorMessage}
+        </div>
+      )}
+      
+      {action && (
+        <div className={cn("mt-4", styles.actions)}>
+          {action}
+        </div>
+      )}
+      
+      {showDefaultActions && !action && (retry || goHome) && (
+        <div className={cn("flex justify-center mt-4", styles.actions)}>
+          {retry !== false && (
+            <Button
+              onClick={handleRetry}
+              variant="default"
+              size={size === "sm" ? "sm" : "default"}
+              className="gap-2"
+            >
+              <RefreshCw className="w-4 h-4" />
+              Try Again
+            </Button>
+          )}
+        </div>
+      )}
+      
+      {showDefaultActions && !action && !retry && !goHome && (
+        <div className={cn("flex justify-center mt-4", styles.actions)}>
+          <Button
+            onClick={handleRetry}
+            variant="default"
+            size={size === "sm" ? "sm" : "default"}
+            className="gap-2"
+          >
+            <RefreshCw className="w-4 h-4" />
+            Try Again
+          </Button>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default ErrorState
