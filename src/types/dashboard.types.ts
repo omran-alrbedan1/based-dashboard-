@@ -21,14 +21,6 @@ export interface PerfCardProps {
   warn?: boolean  
 }
 
-export interface StatCardProps {
-  label: string
-  value: number | string
-  icon: React.ReactNode
-  sub: string      
-  change?: number  
-}
-
 export interface SalesData {
   day: string
   revenue: number

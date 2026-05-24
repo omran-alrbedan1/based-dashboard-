@@ -6,6 +6,7 @@ export interface Option {
   value: string
   label: string
   disabled?: boolean
+   icon?: LucideIcon | string;
 }
 
 export interface DateRange {

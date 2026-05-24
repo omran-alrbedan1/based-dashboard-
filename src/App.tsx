@@ -13,6 +13,8 @@ import ProductApprovalPage from "./pages/ProductApproval/ProductApprovalPage"
 import ProductApprovalDetailsPage from "./pages/ProductApproval/ProductApprovalDetailsPage"
 import OrdersList from "./pages/Orders/OrdersList"
 import OrderDetails from "./pages/Orders/OrderDetails"
+import PaymentsMonitoringPage from "./pages/Payments/PaymentsMonitoringPage"
+import PaymentDetailsPage from "./pages/Payments/PaymentDetailsPage"
 import DriversList from "./pages/Drivers/DriversList"
 import DriverDetails from "./pages/Drivers/DriverDetails"
 import Articles from "./pages/Content/Articles"
@@ -62,6 +64,10 @@ function App() {
           {/* Order Management */}
           <Route path="orders" element={<OrdersList />} />
           <Route path="orders/:id" element={<OrderDetails />} />
+
+          {/* Payments */}
+          <Route path="payments" element={<PaymentsMonitoringPage />} />
+          <Route path="payments/:id" element={<PaymentDetailsPage />} />
           
           {/* Driver Management */}
           <Route path="drivers" element={<DriversList />} />

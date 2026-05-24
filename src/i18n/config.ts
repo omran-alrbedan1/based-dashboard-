@@ -9,19 +9,23 @@ import enProductApproval from "./locales/en/productApproval.json";
 import arProductApproval from "./locales/ar/productApproval.json";
 import enCommon from "./locales/en/common.json";
 import arCommon from "./locales/ar/common.json";
+import enPayments from "./locales/en/payments.json";
+import arPayments from "./locales/ar/payments.json";
 
 const resources = {
   en: {
     translation: enTranslation,
     dashboard: enDashboard,
     productApproval: enProductApproval,
-    common: enCommon
+    common: enCommon,
+    payments: enPayments
   },
   ar: {
     translation: arTranslation,
     dashboard: arDashboard,
     productApproval: arProductApproval,
-    common: arCommon
+    common: arCommon,
+    payments: arPayments
   }
 };
 
@@ -38,7 +42,7 @@ i18n
   .init({
     resources,
     fallbackLng: "en",
-    ns: ["translation", "dashboard", "productApproval", "common"],
+    ns: ["translation", "dashboard", "productApproval", "common", "payments"],
     defaultNS: "translation",
     detection: {
       order: ["localStorage", "cookie", "htmlTag"],

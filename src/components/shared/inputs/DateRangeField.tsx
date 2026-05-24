@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -23,15 +23,32 @@ export const DateRangeField: React.FC<DateRangeFieldProps> = ({
   const [range, setRange] = useState<DateRange>(
     field.value || { from: undefined, to: undefined }
   )
-  
+  const containerRef = useRef<HTMLDivElement>(null)
+
   const getDisabledDays = () => {
     const disabledDays = dateOptions?.disabledDays
     if (!disabledDays || disabledDays.length === 0) return undefined
     return disabledDays
   }
-  
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setOpen(false)
+      }
+    }
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [open])
+
   return (
-    <div className="relative">
+    <div ref={containerRef} className="relative">
       <Button
         type="button"
         variant="outline"
@@ -66,7 +83,7 @@ export const DateRangeField: React.FC<DateRangeFieldProps> = ({
               }
             }}
             disabled={getDisabledDays()}
-            className="rounded-md"
+            className="rounded-md w-56"
           />
         </div>
       )}

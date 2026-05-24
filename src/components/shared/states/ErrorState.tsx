@@ -225,7 +225,6 @@ const ErrorState: React.FC<ErrorStateProps> = ({
       
       {showDefaultActions && !action && (retry || goHome) && (
         <div className={cn("flex justify-center mt-4", styles.actions)}>
-          {retry !== false && (
             <Button
               onClick={handleRetry}
               variant="default"
@@ -235,7 +234,6 @@ const ErrorState: React.FC<ErrorStateProps> = ({
               <RefreshCw className="w-4 h-4" />
               Try Again
             </Button>
-          )}
         </div>
       )}
       

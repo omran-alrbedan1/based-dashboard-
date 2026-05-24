@@ -103,7 +103,7 @@ const Login: React.FC = () => {
       {/* Right Panel: Image */}
       <div className="relative hidden w-1/2 md:block">
         <img
-          src={"https://images.unsplash.com/photo-1505253758473-96b7015fcd40?q=80&w=2070&auto=format&fit=crop"}
+        src={images.login}
           alt="Beyond Gluten products and ingredients"
           className="h-screen w-full object-cover "
         />

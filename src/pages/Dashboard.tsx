@@ -11,7 +11,6 @@ import {
   CircleCheck,
 } from 'lucide-react'
 import {
-  StatCard,
   QuickCard,
   PerfCard,
   RevenueChart,
@@ -20,6 +19,7 @@ import {
   NewUsers,
   DashboardHeader
 } from '@/components/dashboard'
+import StatCard from '@/components/shared/cards/StatCard'
 
 const Dashboard: React.FC = () => {
   const { t } = useTranslation('dashboard')

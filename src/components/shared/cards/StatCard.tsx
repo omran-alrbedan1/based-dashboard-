@@ -1,5 +1,10 @@
-import { StatCardProps } from "@/types/dashboard.types";
-
+interface StatCardProps {
+  label: string
+  value: number | string
+  icon: React.ReactNode
+  sub: string      
+  change?: number  
+}
 const StatCard: React.FC<StatCardProps> = ({
   label,
   value,
