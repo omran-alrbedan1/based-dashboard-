@@ -58,7 +58,7 @@ const getVendorById = (vendorId: string) => {
 }
 
 const ProductApprovalDetailsPage: React.FC = () => {
-  const { t } = useTranslation('productApproval')
+    const { t } = useTranslation('productApproval')
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
 
