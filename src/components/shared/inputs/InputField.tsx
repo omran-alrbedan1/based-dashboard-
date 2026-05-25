@@ -48,7 +48,7 @@ export const InputField: React.FC<InputFieldProps> = ({
         disabled={disabled}
         className={cn(
           inputClassName,
-          "px-6 py-5 text-base",
+          "px-6 py-4 text-base",
           hasLeftIcon && "pl-14",
           hasRightIcon && "pr-14"
         )}

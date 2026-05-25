@@ -1,17 +1,3 @@
-import { format } from 'date-fns';
-import { Shipping } from '@/types/payment.types';
-
-export const formatCurrency = (
-  value: number,
-  currency = 'USD',
-  locale = 'en-US'
-) => {
-  return new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency,
-  }).format(value);
-};
-
 export const formatPhoneNumber = (value: string) => {
   const phoneNumber = value.replace(/\D/g, '');
   const phoneNumberLength = phoneNumber.length;
@@ -27,11 +13,42 @@ export const formatPhoneNumber = (value: string) => {
 
 export const generateId = () => Math.random().toString(36).substr(2, 9);
 
-export const formatDateTime = (date: string | Date) => {
-  if (!date) return 'N/A';
-  return format(new Date(date), 'Pp');
-};
+export function formatDateTime(isoDate: string): string {
+  const date = new Date(isoDate);
+  return date.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
 
-export const formatAddress = (shipping: Shipping) => {
-  return `${shipping.address}, ${shipping.city}, ${shipping.state} ${shipping.zip}`;
-};
+export function formatCurrency(amount: number, currency: string): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+    minimumFractionDigits: 0,
+  }).format(amount);
+}
+
+export function formatETA(isoDate: string): string {
+  const eta = new Date(isoDate);
+  const now = new Date();
+  const diffMs = eta.getTime() - now.getTime();
+  const diffMins = Math.round(diffMs / 60000);
+
+  if (diffMins <= 0) return 'Arriving now';
+  if (diffMins < 60) return `In ${diffMins} min`;
+  const hours = Math.floor(diffMins / 60);
+  const mins = diffMins % 60;
+  return `In ${hours}h${mins > 0 ? ` ${mins}m` : ''}`;
+}
+
+export function formatAddress(address: any): string {
+  return address
+    .split(',')
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .join(', ');
+}

@@ -7,6 +7,8 @@ import emptyProducts from '@/assets/images/emptyProducts.svg'
 import approve from '@/assets/images/approve.svg'
 import payments from '@/assets/images/payments.svg'
 import emptyPayments from '@/assets/images/emptyPayment.svg'
+import orders from '@/assets/images/orders.svg'
+import emptyOrders from '@/assets/images/emptyOrders.svg'
 
 export const images = {
     logo,
@@ -17,5 +19,7 @@ export const images = {
     emptyProducts,
     approve,
     payments,
-    emptyPayments
+    emptyPayments,
+    orders,
+    emptyOrders
 }

@@ -1,100 +1,99 @@
-  import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 
-  import MainLayout from "./components/layout/MainLayout"
-  import Dashboard from "./pages/Dashboard"
-  import Login from "./pages/Login"
-  import UsersList from "./pages/Users/UsersList"
-  import UserDetails from "./pages/Users/UserDetails"
-  import VendorsList from "./pages/Vendors/VendorsList"
-  import VendorDetails from "./pages/Vendors/VendorDetails"
-  import ProductsList from "./pages/Products/ProductsList"
-  import ProductReview from "./pages/Products/ProductReview"
-  import ProductApprovalPage from "./pages/ProductApproval/ProductApprovalPage"
-  import ProductApprovalDetailsPage from "./pages/ProductApproval/ProductApprovalDetailsPage"
-  import OrdersList from "./pages/Orders/OrdersList"
-  import OrderDetails from "./pages/Orders/OrderDetails"
-  import DriversList from "./pages/Drivers/DriversList"
-  import DriverDetails from "./pages/Drivers/DriverDetails"
-  import Articles from "./pages/Content/Articles"
-  import Videos from "./pages/Content/Videos"
-  import Guides from "./pages/Content/Guides"
-  import Posts from "./pages/Community/Posts"
-  import CommunityReports from "./pages/Community/Reports"
-  import SalesReports from "./pages/Reports/SalesReports"
-  import VendorReports from "./pages/Reports/VendorReports"
-  import DeliveryReports from "./pages/Reports/DeliveryReports"
-  import UserReports from "./pages/Reports/UserReports"
-import PaymentsMonitoringPage from "./pages/Payments/PaymentsMonitoringPage"
-import PaymentDetailsPage from "./pages/Payments/PaymentDetailsPage"
+import MainLayout from "./components/layout/MainLayout"
+import Dashboard from "./features/dashboard/pages/Dashboard"
+import Login from "./features/auth/pages/Login"
+import UsersList from "./features/users/pages/UsersList"
+import UserDetails from "./features/users/pages/UserDetails"
+import VendorsList from "./features/vendors/pages/VendorsList"
+import VendorDetails from "./features/vendors/pages/VendorDetails"
+import ProductsList from "./features/products/ProductsList"
+import ProductReview from "./features/products/ProductReview"
+import ProductApprovalPage from "./features/productApproval/pages/ProductApprovalPage"
+import ProductApprovalDetailsPage from "./features/productApproval/pages/ProductApprovalDetailsPage"
+import DriversList from "./features/drivers/pages/DriversList"
+import DriverDetails from "./features/drivers/pages/DriverDetails"
+import Articles from "./features/content/pages/Articles"
+import Videos from "./features/content/pages/Videos"
+import Guides from "./features/content/pages/Guides"
+import Posts from "./features/community/pages/Posts"
+import CommunityReports from "./features/community/pages/Reports"
+import SalesReports from "./features/reports/pages/SalesReports"
+import VendorReports from "./features/reports/pages/VendorReports"
+import DeliveryReports from "./features/reports/pages/DeliveryReports"
+import UserReports from "./features/reports/pages/UserReports"
+import PaymentsMonitoringPage from "./features/payments/pages/PaymentsMonitoringPage"
+import PaymentDetailsPage from "./features/payments/pages/PaymentDetailsPage"
+import OrdersListPage from "./features/orders/pages/OrdersListPage"
+import OrderDetailsPage from "./features/orders/pages/OrderDetailsPage"
 
-  interface PrivateRouteProps {
-    children: React.ReactNode
-  }
+interface PrivateRouteProps {
+  children: React.ReactNode
+}
 
-  function PrivateRoute({ children }: PrivateRouteProps) {
-    return children
-  }
+function PrivateRoute({ children }: PrivateRouteProps) {
+  return children
+}
 
-  function App() {
-    return (
-      <BrowserRouter>
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/login" element={<Login />} />
-          
-          {/* Protected Routes with Layout */}
-          <Route path="/" element={<PrivateRoute><MainLayout /></PrivateRoute>}>
-            <Route index element={<Dashboard />} />
-            
-            {/* User Management */}
-            <Route path="users" element={<UsersList />} />
-            <Route path="users/:id" element={<UserDetails />} />
-            
-            {/* Vendor Management */}
-            <Route path="vendors" element={<VendorsList />} />
-            <Route path="vendors/:id" element={<VendorDetails />} />
-            
-            {/* Product Management */}
-            <Route path="products" element={<ProductsList />} />
-            <Route path="admin/product-approval" element={<ProductApprovalPage />} />
-            <Route path="admin/product-approval/:id" element={<ProductApprovalDetailsPage />} />
-            {/* Approval Subroutes */}
-            <Route path="products/:id" element={<ProductReview />} />
-           
-            {/*Payments management   */}
-            <Route path="payments" element={<PaymentsMonitoringPage />} />
-            <Route path="payments/:id" element={<PaymentDetailsPage />} />
-           
-            {/* Order Management */}
-            <Route path="orders" element={<OrdersList />} />
-            <Route path="orders" element={<OrdersList />} />
-            <Route path="orders/:id" element={<OrderDetails />} />
-            
-            {/* Driver Management */}
-            <Route path="drivers" element={<DriversList />} />
-            <Route path="drivers/:id" element={<DriverDetails />} />
-            
-            {/* Content Management */}
-            <Route path="content/articles" element={<Articles />} />
-            <Route path="content/videos" element={<Videos />} />
-            <Route path="content/guides" element={<Guides />} />
-            
-            {/* Community Management */}
-            <Route path="community/posts" element={<Posts />} />
-            <Route path="community/reports" element={<CommunityReports />} />
-            
-            {/* Reports */}
-            <Route path="reports/sales" element={<SalesReports/>} />
-            <Route path="reports/vendors" element={<VendorReports />} />
-            <Route path="reports/delivery" element={<DeliveryReports />} />
-            <Route path="reports/users" element={<UserReports />} />
-          </Route>
-          
-          {/* Catch all */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </BrowserRouter>
-    )
-  }
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/login" element={<Login />} />
 
-  export default App
+        {/* Protected Routes with Layout */}
+        <Route path="/" element={<PrivateRoute><MainLayout /></PrivateRoute>}>
+          <Route index element={<Dashboard />} />
+
+          {/* User Management */}
+          <Route path="users" element={<UsersList />} />
+          <Route path="users/:id" element={<UserDetails />} />
+
+          {/* Vendor Management */}
+          <Route path="vendors" element={<VendorsList />} />
+          <Route path="vendors/:id" element={<VendorDetails />} />
+
+          {/* Product Management */}
+          <Route path="products" element={<ProductsList />} />
+          <Route path="admin/product-approval" element={<ProductApprovalPage />} />
+          <Route path="admin/product-approval/:id" element={<ProductApprovalDetailsPage />} />
+          {/* Approval Subroutes */}
+          <Route path="products/:id" element={<ProductReview />} />
+
+          {/*Payments management   */}
+          <Route path="payments" element={<PaymentsMonitoringPage />} />
+          <Route path="payments/:id" element={<PaymentDetailsPage />} />
+
+          {/* Order Management */}
+          <Route path="orders" element={<OrdersListPage />} />
+          <Route path="orders/:id" element={<OrderDetailsPage />} />
+
+          {/* Driver Management */}
+          <Route path="drivers" element={<DriversList />} />
+          <Route path="drivers/:id" element={<DriverDetails />} />
+
+          {/* Content Management */}
+          <Route path="content/articles" element={<Articles />} />
+          <Route path="content/videos" element={<Videos />} />
+          <Route path="content/guides" element={<Guides />} />
+
+          {/* Community Management */}
+          <Route path="community/posts" element={<Posts />} />
+          <Route path="community/reports" element={<CommunityReports />} />
+
+          {/* Reports */}
+          <Route path="reports/sales" element={<SalesReports />} />
+          <Route path="reports/vendors" element={<VendorReports />} />
+          <Route path="reports/delivery" element={<DeliveryReports />} />
+          <Route path="reports/users" element={<UserReports />} />
+        </Route>
+
+        {/* Catch all */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
+
+export default App

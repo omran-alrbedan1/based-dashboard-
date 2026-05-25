@@ -17,6 +17,7 @@ import {
   BookOpen,
   MessageCircle,
   X,
+  ShoppingBag,
 } from "lucide-react"
 import { images } from "@/constants/images"
 
@@ -33,7 +34,8 @@ const menuItems: MenuItem[] = [
   { titleKey: "sidebar.menu.vendors", path: "/vendors", icon: Store, notifs: 3 },
   { titleKey: "sidebar.menu.products", path: "/products", icon: ShoppingCart, notifs: 12 },
   { titleKey: "sidebar.menu.productsApproval", path: "/admin/product-approval", icon: ClipboardList },
-  { titleKey: "sidebar.menu.orders", path: "/orders", icon: ClipboardList },
+  { titleKey: "sidebar.menu.paymentsMonitoring", path: "/payments", icon: DollarSign },
+  { titleKey: "sidebar.menu.orders", path: "/orders", icon: ShoppingBag },
   { titleKey: "sidebar.menu.drivers", path: "/drivers", icon: Truck },
 ]
 

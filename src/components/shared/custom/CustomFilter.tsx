@@ -197,7 +197,7 @@ export function CustomFilter<T extends FieldValues>({
                     control={control}
                     name={filter.name}
                     placeholder={filter.placeholder ?? filter.label}
-                    inputClassName="h-8 text-sm"
+                    inputClassName="h-8 md:h-10  text-sm"
                     leftIcon={filter.type === 'text' ? Icon : undefined}
                     iconPosition="left"
                     options={filter.options}
@@ -234,7 +234,7 @@ export function CustomFilter<T extends FieldValues>({
                     control={control}
                     name={filter.name}
                     placeholder={filter.placeholder ?? filter.label}
-                    inputClassName="h-8 text-sm"
+                    inputClassName="h-10 text-sm p-2"
                     leftIcon={filter.type === 'text' ? Icon : undefined}
                     iconPosition="left"
                     options={filter.options}
