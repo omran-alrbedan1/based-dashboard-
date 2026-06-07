@@ -1,3 +1,40 @@
+// utils/driverHelpers.ts
+import type { DriverDocument } from '../types/drivers.types'
+
+export const isDocExpired = (expiresAt: string | null): boolean => {
+  if (!expiresAt) return false
+  const expiryDate = new Date(expiresAt)
+  const today = new Date()
+  return expiryDate < today
+}
+
+export const getDocumentStatus = (doc?: DriverDocument): 'verified' | 'pending' | 'expired' | 'missing' => {
+  if (!doc) return 'missing'
+  
+  if (isDocExpired(doc.expires_at || null)) {
+    return 'expired'
+  }
+  
+  if (doc.verified) {
+    return 'verified'
+  }
+  
+  return 'pending'
+}
+
+export const getDocumentStatusColor = (status: string): string => {
+  switch (status) {
+    case 'verified':
+      return 'text-green-600'
+    case 'pending':
+      return 'text-amber-600'
+    case 'expired':
+      return 'text-red-600'
+    default:
+      return 'text-text-muted'
+  }
+}
+
 export const formatPhoneNumber = (value: string) => {
   const phoneNumber = value.replace(/\D/g, '');
   const phoneNumberLength = phoneNumber.length;
@@ -46,9 +83,10 @@ export function formatETA(isoDate: string): string {
 }
 
 export function formatAddress(address: any): string {
+  if (!address) return '-';
   return address
     .split(',')
-    .map((part:any) => part.trim())
+    .map((part) => part.trim())
     .filter(Boolean)
     .join(', ');
 }

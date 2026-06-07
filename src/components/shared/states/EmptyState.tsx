@@ -65,7 +65,7 @@ const EmptyState: React.FC<EmptyStateProps> = ({
       {primaryAction && (
         <Button
           onClick={primaryAction.onClick}
-          className="gap-2"
+          className="gap-2 text-white"
         >
           {primaryAction.icon && <primaryAction.icon className="w-4 h-4" />}
           {primaryAction.label}

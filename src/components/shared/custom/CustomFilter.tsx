@@ -209,7 +209,7 @@ export function CustomFilter<T extends FieldValues>({
               type="submit"
               disabled={isLoading}
               size="sm"
-              className="w-full h-8 text-sm"
+              className="w-full h-8 text-sm text-white"
             >
               {isLoading ? t('processing') || 'Applying...' : t('filter') || 'Apply Filters'}
             </Button>
@@ -247,7 +247,7 @@ export function CustomFilter<T extends FieldValues>({
               type="submit"
               disabled={isLoading}
               size="sm"
-              className="h-8 px-4 text-sm"
+              className="h-8 px-4 text-sm text-white"
             >
               {isLoading ? '…' : t('apply') || 'Apply'}
             </Button>
