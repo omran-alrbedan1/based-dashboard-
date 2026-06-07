@@ -288,7 +288,10 @@ interface OptionProps {
 const Option: React.FC<OptionProps> = ({ Icon, titleKey, path, currentPath, notifs, isMobile, onClose }) => {
   const navigate = useNavigate()
   const { t } = useTranslation()
-  const isSelected = currentPath === path || (path === "/" && currentPath === "/")
+  const isSelected =
+    path === "/"
+      ? currentPath === "/"
+      : currentPath === path || currentPath.startsWith(`${path}/`)
 
   const handleClick = () => {
     navigate(path)
