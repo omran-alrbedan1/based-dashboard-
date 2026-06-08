@@ -19,7 +19,23 @@
     },
     "dateRange": {
       "label": "النطاق الزمني"
-    }
+    },
+    "searchPlaceholder": "البحث برقم الطلب أو اسم العميل...",
+    "statusLabel": "حالة الطلب",
+    "allStatuses": "جميع الحالات",
+    "dateRangeLabel": "النطاق الزمني",
+    "applyFilters": "تطبيق الفلاتر",
+    "resetFilters": "إعادة تعيين الفلاتر"
+  },
+  "stats": {
+    "totalOrders": "إجمالي الطلبات",
+    "totalOrdersSub": "جميع الطلبات",
+    "pendingOrders": "معلق",
+    "pendingOrdersSub": "بانتظار المعالجة",
+    "deliveredOrders": "تم التوصيل",
+    "deliveredOrdersSub": "تم إكمالها بنجاح",
+    "cancelledOrders": "ملغي",
+    "cancelledOrdersSub": "الطلبات غير المكتملة"
   },
   "table": {
     "orderNumber": "رقم الطلب",
@@ -30,7 +46,9 @@
     "eta": "وقت الوصول المتوقع",
     "date": "التاريخ",
     "details": "التفاصيل",
-    "viewDetails": "عرض التفاصيل"
+    "viewDetails": "عرض التفاصيل",
+    "noData": "لا توجد بيانات متاحة",
+    "noOrders": "لم يتم العثور على طلبات"
   },
   "status": {
     "pending": "معلق",

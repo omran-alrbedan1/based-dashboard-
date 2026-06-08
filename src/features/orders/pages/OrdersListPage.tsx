@@ -11,7 +11,7 @@ import { useFilters } from '@/hooks/useFilter';
 import { EmptyState } from '@/components/shared/states';
 import { OrdersTable } from '../components/OrdersTable';
 import { ordersFilterConfig } from '../configs/orders.config';
-import { OrderFilters } from '../components/OrdersFilters';
+import OrderFilters from '../components/OrdersFilters';
 
 export default function OrdersListPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +24,7 @@ export default function OrdersListPage() {
     per_page: 10,
   });
 
-  const { filteredData, applyFilters, filtersForForm, hasActiveFilters, resetFilters } = useFilters({
+  const { filteredData, filtersForForm, hasActiveFilters, resetFilters, applyFilters } = useFilters({
     data: orders,
     config: ordersFilterConfig,
     syncWithURL: true,
@@ -36,6 +36,8 @@ export default function OrdersListPage() {
 
   const filteredOrders = filteredData as Order[];
 
+  // Stats from orders data
+  const totalOrders = orders.length;
   const pendingOrders = orders.filter(o => o.status === 'pending').length;
   const deliveredOrders = orders.filter(o => o.status === 'delivered').length;
   const cancelledOrders = orders.filter(o => o.status === 'cancelled').length;
@@ -44,38 +46,35 @@ export default function OrdersListPage() {
     <div className="p-4 sm:p-6 lg:p-8 min-h-screen bg-background">
       <PageHeader
         title={t('ordersListPage.pageTitle')}
-        description={t('ordersListPage.pageDescription', { 
-          filteredCount: filteredOrders.length, 
-          totalCount: paginationMeta.total 
-        })}
-        image={{ src: images.orders, alt: 'Orders', className: 'h-6 sm:h-8' }}
+        description={t('ordersListPage.pageDescription')}
+        image={{ src: images.orders, alt: t('ordersListPage.pageTitle') }}
       />
 
-      {/* Stats Grid - Responsive */}
+      {/* Stats Grid */}
       <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 my-4 sm:my-6 lg:my-8">
         <StatCard
-          label={t('ordersListPage.statCards.totalOrders.label')}
-          value={paginationMeta.total}
-          sub={t('ordersListPage.statCards.totalOrders.sub')}
-          icon={<ListOrdered size={18} className="sm:text-[20px]" />}
+          label={t('stats.totalOrders')}
+          value={totalOrders}
+          sub={t('stats.totalOrdersSub')}
+          icon={<ListOrdered className="h-5 w-5" />}
         />
         <StatCard
-          label={t('ordersListPage.statCards.pending.label')}
+          label={t('stats.pendingOrders')}
           value={pendingOrders}
-          sub={t('ordersListPage.statCards.pending.sub')}
-          icon={<Clock size={18} className="sm:text-[20px]" />}
+          sub={t('stats.pendingOrdersSub')}
+          icon={<Clock className="h-5 w-5" />}
         />
         <StatCard
-          label={t('ordersListPage.statCards.delivered.label')}
+          label={t('stats.deliveredOrders')}
           value={deliveredOrders}
-          sub={t('ordersListPage.statCards.delivered.sub')}
-          icon={<CheckCircle size={18} className="sm:text-[20px]" />}
+          sub={t('stats.deliveredOrdersSub')}
+          icon={<CheckCircle className="h-5 w-5" />}
         />
         <StatCard
-          label={t('ordersListPage.statCards.cancelled.label')}
+          label={t('stats.cancelledOrders')}
           value={cancelledOrders}
-          sub={t('ordersListPage.statCards.cancelled.sub')}
-          icon={<XCircle size={18} className="sm:text-[20px]" />}
+          sub={t('stats.cancelledOrdersSub')}
+          icon={<XCircle className="h-5 w-5" />}
         />
       </div>
 
@@ -90,32 +89,50 @@ export default function OrdersListPage() {
       {/* Orders Table */}
       <div className="bg-card rounded-2xl border border-border/50 overflow-hidden mt-4 sm:mt-6">
         {isLoading ? (
-          <div className="p-8 sm:p-12 flex items-center justify-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-          </div>
+          <OrdersTable
+            orders={[]}
+            loading={true}
+            pagination={{
+              total: 0,
+              page: 1,
+              lastPage: 1,
+            }}
+            onPageChange={() => {}}
+          />
         ) : filteredOrders.length === 0 ? (
           <div className="p-8 sm:p-12">
             {hasActiveFilters ? (
               <EmptyState
-                title={t('ordersListPage.emptyState.noOrdersFoundTitle')}
-                description={t('ordersListPage.emptyState.noOrdersFoundDescription')}
+                title={t('table.noOrders')}
+                description={t('ordersListPage.pageDescription')}
                 imageUrl={images.emptyOrders}
                 primaryAction={{
-                  label: t('ordersListPage.emptyState.clearFilters'),
+                  label: t('filters.resetFilters'),
                   onClick: resetFilters,
                   icon: FilterX,
                 }}
               />
             ) : (
               <EmptyState
-                title={t('ordersListPage.emptyState.noOrdersToShowTitle')}
-                description={t('ordersListPage.emptyState.noOrdersToShowDescription')}
+                title={t('table.noOrders')}
+                description={t('ordersListPage.pageDescription')}
                 imageUrl={images.emptyOrders}
               />
             )}
           </div>
         ) : (
-          <OrdersTable orders={filteredOrders} />
+          <OrdersTable
+            orders={filteredOrders}
+            loading={false}
+            pagination={{
+              total: paginationMeta.total,
+              page: paginationMeta.current_page,
+              lastPage: paginationMeta.last_page,
+            }}
+            onPageChange={(page) => {
+              setPaginationMeta(prev => ({ ...prev, current_page: page }));
+            }}
+          />
         )}
       </div>
     </div>

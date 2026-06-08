@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { AlertTriangle, X, Check } from 'lucide-react'
+import { AlertTriangle, X, Check, Store } from 'lucide-react'
 import type { Driver } from '../types/drivers.types'
 import {
   Dialog,

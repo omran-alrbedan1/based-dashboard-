@@ -1,0 +1,32 @@
+Sunday, June 7, 2026
+1.  Create Drivers List Page with Pagination and Filters:
+     Develop the main page component (`DriversList.tsx`) to display all drivers, including implementation of pagination and filtering functionalities.
+
+2.  Create Driver Details Page:
+     Design and implement the page (`DriverDetails.tsx`) to show detailed information for a specific driver.
+
+3.  Integrate Driver Orders History:
+     Incorporate the `DriverOrdersHistory.tsx` component into the Driver Details Page to display the driver's past orders with pagination.
+
+4.  Implement Driver Documents Management:
+     Integrate the `DriverDocuments.tsx` component into the Driver Details Page to handle the display, upload, and management of driver documents.
+
+5.  Add Driver Activation and Suspension Features:
+     Develop the necessary modals (`DriverActivateModal.tsx`, `DriverSuspendModal.tsx`) and logic to allow activation and suspension of driver accounts.
+
+6.  Implement Send Message Functionality:
+     Create the `SendMessageModal.tsx` component and its associated logic to enable sending messages to drivers.
+
+Monday, June 8, 2026
+
+1.  Refactor shared modals (Approve, Activate, Reject, Suspend, SendMessage)
+
+2.  Create DataTable shared component:
+      Build a reusable `DataTable` (`src/components/shared/custom/DataTable.tsx`) with dynamic columns, sorting, skeleton loading, and built-in pagination (`DataTablePagination`).
+
+3.  Implement Vendors List Page with Filters, Table & Pagination:
+
+4.  Create Vendor Details Page with Tabs:
+      Design `VendorDetails.tsx` with shadcn `Tabs` containing Overview and Products tabs; integrate `VendorOverview` card and `VendorProducts` grid.
+
+5.  Implement Vendor Products Section

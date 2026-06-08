@@ -247,9 +247,9 @@ export function CustomFilter<T extends FieldValues>({
               type="submit"
               disabled={isLoading}
               size="sm"
-              className="h-8 px-4 text-sm text-white"
+              className="h-9 mb-0.5 px-4 text-sm text-white"
             >
-              {isLoading ? '…' : t('apply') || 'Apply'}
+              {isLoading ? t('apply') : t('apply') || 'Apply'}
             </Button>
           </div>
         </form>

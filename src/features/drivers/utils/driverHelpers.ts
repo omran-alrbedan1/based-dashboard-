@@ -82,14 +82,6 @@ export function formatETA(isoDate: string): string {
   return `In ${hours}h${mins > 0 ? ` ${mins}m` : ''}`;
 }
 
-export function formatAddress(address: any): string {
-  if (!address) return '-';
-  return address
-    .split(',')
-    .map((part) => part.trim())
-    .filter(Boolean)
-    .join(', ');
-}
 
 export function formatJoinedDate(date: string | null | undefined, locale: string): string {
   if (!date) return '-';

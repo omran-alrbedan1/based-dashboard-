@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useTranslation } from "react-i18next"
-import { MessageSquare, Send, User, Phone, X } from "lucide-react"
+import { MessageSquare, Send, User, Phone, X, Store } from "lucide-react"
 import type { Driver } from "../types/drivers.types"
 import {
   Dialog,

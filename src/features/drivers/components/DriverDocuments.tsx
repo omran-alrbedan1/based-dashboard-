@@ -1,16 +1,18 @@
 //@ts-nocheck
 import { useState } from 'react'
 import { 
-  CheckCircle, 
-  AlertCircle, 
-  Eye, 
-  Upload, 
+  CheckCircle,
+  AlertCircle,
+  Eye,
+  Upload,
   XCircle,
   Calendar,
   Clock,
   Download,
   RefreshCw,
-  X
+  X,
+  File,
+  Store
 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useDriverDocuments } from '../hooks/useDriverDocument'
@@ -81,6 +83,7 @@ const DriverDocuments: React.FC<DriverDocumentsProps> = ({ driverId }) => {
   const [selectedDocumentType, setSelectedDocumentType] = useState<string | null>(null)
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [expiryDate, setExpiryDate] = useState('')
+  const [error, setError] = useState<string | null>(null)
   
   const locale = i18n.language === 'ar' ? 'ar-EG' : 'en-US'
 
@@ -88,19 +91,25 @@ const DriverDocuments: React.FC<DriverDocumentsProps> = ({ driverId }) => {
     if (url && url !== '#') {
       window.open(url, '_blank')
     } else {
-      
+      console.error('Preview unavailable: Invalid document URL')
+      setError(t('documents.errors.previewUnavailable'))
+      setTimeout(() => setError(null), 3000)
     }
   }
 
   const handleDownload = async (doc: any) => {
     if (!doc?.url || doc.url === '#') {
-   
+      console.error('Download failed: No document URL available')
+      setError(t('documents.errors.downloadUnavailable'))
+      setTimeout(() => setError(null), 3000)
       return
     }
 
     try {
-      // If it's a blob URL or direct download link
       const response = await fetch(doc.url)
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
       const blob = await response.blob()
       const url = window.URL.createObjectURL(blob)
       const link = document.createElement('a')
@@ -110,17 +119,19 @@ const DriverDocuments: React.FC<DriverDocumentsProps> = ({ driverId }) => {
       link.click()
       document.body.removeChild(link)
       window.URL.revokeObjectURL(url)
-      
-  
     } catch (error) {
       console.error('Download failed:', error)
-    
+      setError(t('documents.errors.downloadFailed'))
+      setTimeout(() => setError(null), 3000)
     }
   }
 
   const handleUploadClick = (documentType: string) => {
     setSelectedDocumentType(documentType)
     setShowUploadModal(true)
+    setError(null)
+    setSelectedFile(null)
+    setExpiryDate('')
   }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -129,19 +140,25 @@ const DriverDocuments: React.FC<DriverDocumentsProps> = ({ driverId }) => {
       const maxSize = 5 * 1024 * 1024 // 5MB
       
       if (file.size > maxSize) {
+        setError(t('documents.errors.fileTooLarge'))
+        setTimeout(() => setError(null), 3000)
         return
       }
       
       setSelectedFile(file)
+      setError(null)
     }
   }
 
   const handleUploadSubmit = async () => {
     if (!selectedFile || !selectedDocumentType) {
+      setError(t('documents.errors.noFileSelected'))
+      setTimeout(() => setError(null), 3000)
       return
     }
 
     setUploadingFor(selectedDocumentType)
+    setError(null)
     
     try {
       const formData = new FormData()
@@ -157,15 +174,15 @@ const DriverDocuments: React.FC<DriverDocumentsProps> = ({ driverId }) => {
       await queryClient.invalidateQueries({ queryKey: ['driver-documents', driverId] })
       await refetch()
       
-      
       // Reset modal state
       setShowUploadModal(false)
       setSelectedFile(null)
       setExpiryDate('')
       setSelectedDocumentType(null)
+      setError(null)
     } catch (error) {
       console.error('Upload failed:', error)
-      
+      setError(t('documents.errors.uploadFailed'))
     } finally {
       setUploadingFor(null)
     }
@@ -377,10 +394,15 @@ const DriverDocuments: React.FC<DriverDocumentsProps> = ({ driverId }) => {
       <div className="rounded-2xl border border-border bg-background-card overflow-hidden shadow-card">
         {/* Header */}
         <div className="border-b border-border bg-gradient-to-r from-primary/5 to-transparent px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-xl font-semibold text-text-primary">{t('documents.title')}</h2>
-              <p className="text-sm text-text-secondary mt-1">{t('documents.description')}</p>
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="flex items-center gap-4">
+              <div className="rounded-full bg-primary/10 p-2.5">
+                <File className="text-primary" size={20} />
+              </div>
+              <div>
+                <h2 className="text-xl font-semibold text-text-primary">{t('documents.title')}</h2>
+                <p className="text-sm text-text-secondary mt-1">{t('documents.description')}</p>
+              </div>
             </div>
             {documents.length > 0 && (
               <button
@@ -393,6 +415,16 @@ const DriverDocuments: React.FC<DriverDocumentsProps> = ({ driverId }) => {
             )}
           </div>
         </div>
+
+        {/* Error Toast */}
+        {error && (
+          <div className="mx-6 mt-4 rounded-lg bg-red-50 border border-red-200 p-3">
+            <div className="flex items-center gap-2 text-red-700">
+              <AlertCircle size={16} />
+              <span className="text-sm">{error}</span>
+            </div>
+          </div>
+        )}
 
         {/* Content - Grid Layout with 2 columns */}
         <div className="p-6">
@@ -426,7 +458,12 @@ const DriverDocuments: React.FC<DriverDocumentsProps> = ({ driverId }) => {
                 </h3>
               </div>
               <button
-                onClick={() => setShowUploadModal(false)}
+                onClick={() => {
+                  setShowUploadModal(false)
+                  setError(null)
+                  setSelectedFile(null)
+                  setExpiryDate('')
+                }}
                 className="rounded-lg p-1 text-text-secondary hover:bg-background hover:text-text-primary transition-colors"
               >
                 <X size={20} />
@@ -434,6 +471,15 @@ const DriverDocuments: React.FC<DriverDocumentsProps> = ({ driverId }) => {
             </div>
 
             <div className="p-6 space-y-4">
+              {error && (
+                <div className="rounded-lg bg-red-50 border border-red-200 p-3">
+                  <div className="flex items-center gap-2 text-red-700">
+                    <AlertCircle size={16} />
+                    <span className="text-sm">{error}</span>
+                  </div>
+                </div>
+              )}
+
               <div>
                 <label className="mb-2 block text-sm font-medium text-text-primary">
                   {t('documents.selectFile')}
@@ -464,7 +510,12 @@ const DriverDocuments: React.FC<DriverDocumentsProps> = ({ driverId }) => {
 
             <div className="flex justify-end gap-3 border-t border-border p-4">
               <CancelButton
-                onClick={() => setShowUploadModal(false)}
+                onClick={() => {
+                  setShowUploadModal(false)
+                  setError(null)
+                  setSelectedFile(null)
+                  setExpiryDate('')
+                }}
                 text={t('common.cancel')}
               />
               <SubmitButton

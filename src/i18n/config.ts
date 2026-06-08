@@ -15,6 +15,8 @@ import enOrders from "./locales/en/orders.json";
 import arOrders from "./locales/ar/orders.json";
 import enDrivers from "./locales/en/drivers.json";
 import arDrivers from "./locales/ar/drivers.json";
+import enVendors from "./locales/en/vendors.json";
+import arVendors from "./locales/ar/vendors.json";
 
 const resources = {
   en: {
@@ -25,6 +27,7 @@ const resources = {
     payments: enPayments,
     orders: enOrders,
     drivers: enDrivers,
+    vendors: enVendors,
   },
   ar: {
     translation: arTranslation,
@@ -34,6 +37,7 @@ const resources = {
     payments: arPayments,
     orders: arOrders,
     drivers: arDrivers,
+    vendors: arVendors,
   }
 };
 
@@ -50,7 +54,7 @@ i18n
   .init({
     resources,
     fallbackLng: "en",
-    ns: ["translation", "dashboard", "productApproval", "common", "payments", "orders", "drivers"], 
+    ns: ["translation", "dashboard", "productApproval", "common", "payments", "orders", "drivers", "vendors"], 
     defaultNS: "translation",
     detection: {
       order: ["localStorage", "cookie", "htmlTag"],

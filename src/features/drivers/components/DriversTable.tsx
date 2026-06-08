@@ -1,7 +1,6 @@
 import { useMemo, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { cn } from '@/lib/utils'
 import {
   Table,
   TableBody,

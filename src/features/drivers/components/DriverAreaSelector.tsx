@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Save } from 'lucide-react'
+import { MapPin, Save } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useDriver } from '../hooks/useDriver'
 import type { DriverArea } from '../types/drivers.types'
@@ -32,12 +32,15 @@ const DriverAreaSelector: React.FC<DriverAreaSelectorProps> = ({ driverId, curre
 
   return (
     <div className="rounded-3xl border border-border bg-background-card p-6 shadow-card">
-      <div className="mb-5 flex items-center justify-between">
-        <div>
+      <div className="mb-5 flex items-center gap-4">
+
+        <div className="rounded-full bg-primary/10 p-2.5">
+          <MapPin className="text-primary" size={20} />
+        </div>
+             <div>
           <h2 className="text-lg font-semibold text-text-primary">{t('areaSelector.title')}</h2>
           <p className="text-sm text-text-secondary">{t('areaSelector.description')}</p>
         </div>
-        <Save className="text-primary" size={20} />
       </div>
 
       {!allAreas || allAreas.length === 0 ? (

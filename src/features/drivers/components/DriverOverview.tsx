@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next'
-import DriverStatusBadge from './DriverStatusBadge'
 import {
     Phone,
     Mail,
     Calendar,
     User,
+    Store,
     Truck,
     Package,
     Activity,
@@ -18,6 +18,7 @@ import {
     Navigation,
     Briefcase,
 } from 'lucide-react'
+import DriverStatusBadge from './DriverStatusBadge'
 import type { Driver } from '../types/drivers.types'
 import { MetricStatusCard } from '@/components/shared/cards/MetricCard'
 import { formatJoinedDate } from '@/lib/formatter'

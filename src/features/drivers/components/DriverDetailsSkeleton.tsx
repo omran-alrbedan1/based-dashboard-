@@ -1,4 +1,4 @@
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@/components/ui/skeleton';
 
 export const DriverDetailsSkeleton: React.FC = () => {
   return (
@@ -93,5 +93,5 @@ export const DriverDetailsSkeleton: React.FC = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

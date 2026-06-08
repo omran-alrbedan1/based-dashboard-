@@ -19,7 +19,13 @@
     },
     "dateRange": {
       "label": "Date Range"
-    }
+    },
+    "searchPlaceholder": "Search by order # or customer...",
+    "statusLabel": "Order Status",
+    "allStatuses": "All Statuses",
+    "dateRangeLabel": "Date Range",
+    "applyFilters": "Apply Filters",
+    "resetFilters": "Reset Filters"
   },
   "table": {
     "orderNumber": "Order #",
@@ -30,7 +36,9 @@
     "eta": "ETA",
     "date": "Date",
     "details": "Details",
-    "viewDetails": "View Details"
+    "viewDetails": "View Details",
+    "noData": "No data available",
+    "noOrders": "No orders found"
   },
   "status": {
     "pending": "Pending",
@@ -137,6 +145,16 @@
       "description": "Please check the order ID and try again.",
       "backToOrders": "Back to Orders"
     }
+  },
+  "stats": {
+    "totalOrders": "Total Orders",
+    "totalOrdersSub": "All time orders",
+    "pendingOrders": "Pending",
+    "pendingOrdersSub": "Awaiting processing",
+    "deliveredOrders": "Delivered",
+    "deliveredOrdersSub": "Successfully completed",
+    "cancelledOrders": "Cancelled",
+    "cancelledOrdersSub": "Orders not fulfilled"
   },
   "ordersListPage": {
     "pageTitle": "Orders",

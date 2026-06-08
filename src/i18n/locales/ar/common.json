@@ -46,11 +46,11 @@
   "error": "خطأ",
   "warning": "تحذير",
   "info": "معلومات",
-  "all": "الجميع",
+  "all": "الكل",
   "none": "لا شيء",
-  "select": "اختيار",
-  "selectAll": "اختيار الكل",
-  "deselectAll": "إلغاء اختيار الكل",
+  "select": "اختر",
+  "selectAll": "تحديد الكل",
+  "deselectAll": "إلغاء تحديد الكل",
   "more": "المزيد",
   "less": "أقل",
   "moreInfo": "مزيد من المعلومات",
@@ -69,16 +69,16 @@
   "completed": "مكتمل",
   "failed": "فشل",
   "inProgress": "قيد التنفيذ",
-  "noData": "لا توجد بيانات",
-  "noResults": "لا توجد نتائج",
+  "noData": "لا توجد بيانات متاحة",
+  "noResults": "لم يتم العثور على نتائج",
   "noOptions": "لا توجد خيارات متاحة",
   "tryAgain": "حاول مرة أخرى",
   "retry": "إعادة المحاولة",
   "goBack": "العودة",
-  "goHome": "الذهاب للرئيسية",
+  "goHome": "الذهاب إلى الرئيسية",
   "pageNotFound": "الصفحة غير موجودة",
   "somethingWentWrong": "حدث خطأ ما",
-  "unauthorized": "وصول غير مصرح به",
+  "unauthorized": "دخول غير مصرح به",
   "forbidden": "الوصول ممنوع",
   "name": "الاسم",
   "email": "البريد الإلكتروني",
@@ -96,8 +96,8 @@
   "login": "تسجيل الدخول",
   "register": "التسجيل",
   "dashboard": "لوحة التحكم",
-  "users": "المستخدمين",
-  "vendors": "البائعين",
+  "users": "المستخدمون",
+  "vendors": "البائعون",
   "products": "المنتجات",
   "orders": "الطلبات",
   "reports": "التقارير",
@@ -111,5 +111,48 @@
   "aboutUs": "معلومات عنا",
   "version": "الإصدار",
   "apply": "تطبيق",
-  "activeFilters": "الفلاتر النشطة:"
+  "activeFilters": "عوامل التصفية النشطة:",
+  "modals": {
+    "cancel": "إلغاء",
+    "processing": "جاري المعالجة...",
+    "reasonTooLong": "السبب طويل جدًا",
+    "approve": {
+      "title": "قبول",
+      "description": "هل أنت متأكد من رغبتك في قبول {{name}}؟",
+      "confirm": "قبول",
+      "hint": "لا يمكن التراجع عن هذا الإجراء"
+    },
+    "activate": {
+      "title": "تفعيل الحساب",
+      "description": "هل أنت متأكد من رغبتك في تفعيل {{name}}؟",
+      "confirm": "تفعيل",
+      "hint": "لا يمكن التراجع عن هذا الإجراء"
+    },
+    "reject": {
+      "title": "رفض",
+      "description": "هل أنت متأكد من رغبتك في رفض {{name}}؟",
+      "confirm": "رفض",
+      "reasonPlaceholder": "قدم سببًا للرفض..."
+    },
+    "suspend": {
+      "title": "تعليق الحساب",
+      "description": "هل أنت متأكد من رغبتك في تعليق {{name}}؟",
+      "confirm": "تعليق",
+      "reasonPlaceholder": "قدم سبباً للتعليق...",
+      "hint": "لا يمكن التراجع عن هذا الإجراء"
+    },
+    "sendMessage": {
+      "title": "إرسال رسالة",
+      "description": "إرسال رسالة إلى المستلم",
+      "confirm": "إرسال",
+      "confirmLoading": "جاري الإرسال...",
+      "to": "إلى",
+      "phone": "الهاتف",
+      "message": "الرسالة",
+      "messagePlaceholder": "اكتب رسالتك هنا...",
+      "messageHint": "الحد الأقصى 500 حرف",
+      "messageRequired": "الرسالة مطلوبة",
+      "messageTooLong": "يجب أن تكون الرسالة أقل من 500 حرف"
+    }
+  }
 }

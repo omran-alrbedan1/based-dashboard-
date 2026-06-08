@@ -11,6 +11,8 @@ import orders from '@/assets/images/orders.svg'
 import emptyOrders from '@/assets/images/emptyOrders.svg'
 import drivers from '@/assets/images/drivers.svg'
 import emptyDrivers from '@/assets/images/emptyDrivers.svg'
+import vendors from '@/assets/images/vendors.svg'
+import emptyVendors from '@/assets/images/emptyVendors.svg'
 import packages from '@/assets/images/package.svg'
 
 //// icons 
@@ -35,6 +37,8 @@ export const images = {
     emptyOrders,
     drivers,
     emptyDrivers,
+    vendors,
+    emptyVendors,
     packages
 }
 

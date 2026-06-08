@@ -111,5 +111,48 @@
   "aboutUs": "About Us",
   "version": "Version",
   "apply": "Apply",
-  "activeFilters": "Active filters:"
+  "activeFilters": "Active filters:",
+  "modals": {
+    "cancel": "Cancel",
+    "processing": "Processing...",
+    "reasonTooLong": "Reason is too long",
+    "approve": {
+      "title": "Approve",
+      "description": "Are you sure you want to approve {{name}}?",
+      "confirm": "Approve",
+      "hint": "This action cannot be undone"
+    },
+    "activate": {
+      "title": "Activate Account",
+      "description": "Are you sure you want to activate {{name}}?",
+      "confirm": "Activate",
+      "hint": "This action cannot be undone"
+    },
+    "reject": {
+      "title": "Reject",
+      "description": "Are you sure you want to reject {{name}}?",
+      "confirm": "Reject",
+      "reasonPlaceholder": "Provide a reason for rejection..."
+    },
+    "suspend": {
+      "title": "Suspend Account",
+      "description": "Are you sure you want to suspend {{name}}?",
+      "confirm": "Suspend",
+      "reasonPlaceholder": "Provide a reason for suspension...",
+      "hint": "This action cannot be undone"
+    },
+    "sendMessage": {
+      "title": "Send Message",
+      "description": "Send a message to the recipient",
+      "confirm": "Send",
+      "confirmLoading": "Sending...",
+      "to": "To",
+      "phone": "Phone",
+      "message": "Message",
+      "messagePlaceholder": "Type your message here...",
+      "messageHint": "Max 500 characters",
+      "messageRequired": "Message is required",
+      "messageTooLong": "Message must be under 500 characters"
+    }
+  }
 }

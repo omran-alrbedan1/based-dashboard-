@@ -7,7 +7,6 @@ import {
   Truck, 
   MapPin, 
   XCircle,
-  AlertCircle,
   X
 } from "lucide-react";
 import { OrderStatus } from '@/features/orders/types/orders.types';

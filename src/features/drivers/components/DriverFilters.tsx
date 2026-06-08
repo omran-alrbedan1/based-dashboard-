@@ -1,5 +1,5 @@
 import { Search, UserCheck, UserX, UserPlus, WifiOff, MapPin, AlertCircle } from 'lucide-react'
-import { CustomFilter, FilterField } from '@/components/shared/custom/CustomFilter'
+import { CustomFilter, FilterField } from '@/components/shared/custom/CustomFilter';
 import { useTranslation } from 'react-i18next'
 import { MOCK_AREAS } from '../data/drivers.data'
 import { EMPTY_STATUS, EMPTY_AREA, IDriverFilterForm, DRIVER_FILTERS_DEFAULT } from '../types/drivers.types'

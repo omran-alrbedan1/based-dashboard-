@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
-import { UserCheck, UserX, UserPlus, WifiOff, AlertCircle, X } from 'lucide-react'
+import { UserCheck, UserX, UserPlus, WifiOff, AlertCircle, X, Store } from 'lucide-react'
 import type { DriverStatus } from '../types/drivers.types'
 
 export type DriverStatusType = DriverStatus

@@ -1,8 +1,8 @@
-import { Search, Package, Clock, CheckCircle, XCircle, MapPin, Truck, AlertCircle, Calendar } from 'lucide-react';
+import { Search, Package, Filter, AlertCircle, Clock, CheckCircle, XCircle, MapPin, Truck, Calendar } from 'lucide-react';
 import { CustomFilter, FilterField } from '@/components/shared/custom/CustomFilter';
-import { OrderStatusBadge } from '@/components/shared/badges';
-import { EMPTY_STATUS, IOrderFilterForm, ORDER_FILTERS_DEFAULT, OrderStatus } from '../types/orders.types';
 import { useTranslation } from 'react-i18next';
+import type { IOrderFilterForm } from '../types/orders.types';
+import { EMPTY_STATUS, ORDER_FILTERS_DEFAULT } from '../types/orders.types';
 
 interface OrderFiltersProps {
   onApplyFilters: (filters: IOrderFilterForm) => void;
@@ -11,57 +11,43 @@ interface OrderFiltersProps {
   initialFilters?: Partial<IOrderFilterForm>;
 }
 
-export function OrderFilters({
+const OrderFilters = ({
   onApplyFilters,
   onResetFilters,
   isLoading,
   initialFilters,
-}: OrderFiltersProps) {
-  const { t } = useTranslation('orders'); 
+}: OrderFiltersProps) => {
+  const { t } = useTranslation('orders');
 
   const orderFiltersConfig: FilterField<IOrderFilterForm>[] = [
     {
       name: 'search',
-      label: t('filters.search.label'), 
+      label: t('filters.searchPlaceholder'),
       type: 'text',
-      placeholder: t('filters.search.placeholder'), 
+      placeholder: t('filters.searchPlaceholder'),
       icon: Search,
       minWidth: '200px',
-      getDisplayValue: (value) =>
-        typeof value === 'string' && value.length > 20
-          ? `${value.slice(0, 20)}…`
-          : (value as string),
     },
     {
       name: 'status',
-      label: t('filters.status.label'), 
+      label: t('filters.statusLabel'),
       type: 'select',
-      icon: Package,
+      icon: Filter,
       minWidth: '150px',
       emptyValue: EMPTY_STATUS,
       options: [
-        { value: EMPTY_STATUS, label: t('filters.status.options.all'), icon: AlertCircle }, 
-        { value: 'pending', label: t('filters.status.options.pending'), icon: Clock }, 
-        { value: 'accepted', label: t('filters.status.options.accepted'), icon: CheckCircle }, 
-        { value: 'preparing', label: t('filters.status.options.preparing'), icon: Package }, 
-        { value: 'on_delivery', label: t('filters.status.options.on_delivery'), icon: Truck }, 
-        { value: 'delivered', label: t('filters.status.options.delivered'), icon: MapPin }, 
-        { value: 'cancelled', label: t('filters.status.options.cancelled'), icon: XCircle }, 
+        { value: EMPTY_STATUS, label: t('filters.allStatuses'), icon: AlertCircle },
+        { value: 'pending', label: t('status.pending'), icon: Clock },
+        { value: 'accepted', label: t('status.accepted'), icon: CheckCircle },
+        { value: 'preparing', label: t('status.preparing'), icon: Package },
+        { value: 'on_delivery', label: t('status.on_delivery'), icon: Truck },
+        { value: 'delivered', label: t('status.delivered'), icon: MapPin },
+        { value: 'cancelled', label: t('status.cancelled'), icon: XCircle },
       ],
-      renderBadge: (value, clear) => {
-        if (!value || value === EMPTY_STATUS) return null;
-        return (
-          <OrderStatusBadge 
-            status={value as OrderStatus}
-            onRemove={clear}
-            size="sm"
-          />
-        );
-      },
     },
     {
       name: 'dateRange',
-      label: t('filters.dateRange.label'),
+      label: t('filters.dateRangeLabel'),
       type: 'date-range',
       icon: Calendar,
       minWidth: '180px',
@@ -69,8 +55,8 @@ export function OrderFilters({
   ];
 
   return (
-    <CustomFilter<IOrderFilterForm> 
-      title={t('filters.title')} 
+    <CustomFilter<IOrderFilterForm>
+      title={t('filters.applyFilters')}
       filters={orderFiltersConfig}
       defaultValues={ORDER_FILTERS_DEFAULT}
       onApplyFilters={onApplyFilters}
@@ -79,4 +65,6 @@ export function OrderFilters({
       initialFilters={initialFilters}
     />
   );
-}
+};
+
+export default OrderFilters;

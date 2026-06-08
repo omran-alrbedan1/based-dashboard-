@@ -98,9 +98,16 @@ const DriversList = () => {
 
       <div className="bg-card rounded-2xl border border-border/50 overflow-hidden mt-4 sm:mt-6">
         {loading ? (
-          <div className="p-8 sm:p-12 flex items-center justify-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-          </div>
+          <DriversTable
+            drivers={[]}
+            loading={true}
+            pagination={{
+              total: 0,
+              page: 1,
+              lastPage: 1,
+            }}
+            onPageChange={() => {}}
+          />
         ) : filteredDrivers.length === 0 ? (
           <div className="p-8 sm:p-12">
             {hasActiveFilters ? (
@@ -131,7 +138,7 @@ const DriversList = () => {
         ) : (
           <DriversTable
             drivers={filteredDrivers}
-            loading={loading}
+            loading={false}
             pagination={{
               total: pagination.total,
               page: pagination.current_page,

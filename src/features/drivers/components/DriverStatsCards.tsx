@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Package, Star, TrendingUp, Clock, CheckCircle, XCircle } from 'lucide-react'
+import { Package, Star, TrendingUp, Clock, CheckCircle, XCircle, Store } from 'lucide-react'
 import type { DriverStats } from '../types/drivers.types'
 
 interface DriverStatsCardsProps {

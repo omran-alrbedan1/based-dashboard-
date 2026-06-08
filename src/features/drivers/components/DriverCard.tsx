@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Phone, Mail } from 'lucide-react'
+import { Phone, Mail, Store } from 'lucide-react'
 import type { Driver } from '../types/drivers.types'
 import DriverStatusBadge from './DriverStatusBadge'
 
