@@ -168,5 +168,10 @@
     "vehicleColor": "Vehicle Color",
     "vehiclePlate": "Vehicle Plate",
     "licenseNumber": "License Number"
+  },
+  "driverApproval": {
+    "title": "Driver Approval",
+    "description": "Review and approve new driver registration requests.",
+    "emptyState": "No pending driver approval requests."
   }
 }

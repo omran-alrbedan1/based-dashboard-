@@ -9,6 +9,7 @@ import ProductApprovalPage from "./features/productApproval/pages/ProductApprova
 import ProductApprovalDetailsPage from "./features/productApproval/pages/ProductApprovalDetailsPage"
 import DriversList from "./features/drivers/pages/DriversList"
 import DriverDetails from "./features/drivers/pages/DriverDetails"
+import DriverApprovalPage from "./features/drivers/pages/DriverApprovalPage"
 import Articles from "./features/content/pages/Articles"
 import Videos from "./features/content/pages/Videos"
 import Guides from "./features/content/pages/Guides"
@@ -23,6 +24,7 @@ import PaymentDetailsPage from "./features/payments/pages/PaymentDetailsPage"
 import UsersList from "./features/users/pages/UsersList"
 import VendorsList from "./features/vendors/pages/VendorsList"
 import VendorDetails from "./features/vendors/pages/VendorDetails"
+import VendorApprovalPage from "./features/vendors/pages/VendorApprovalPage"
 import OrdersListPage from "./features/orders/pages/OrdersListPage"
 import UserDetails from "./features/users/pages/UserDetails"
 import OrderDetailsPage from "./features/orders/pages/OrderDetailsPage"
@@ -53,6 +55,7 @@ function App() {
           {/* Vendor Management */}
           <Route path="vendors" element={<VendorsList />} />
           <Route path="vendors/:id" element={<VendorDetails />} />
+          <Route path="admin/vendor-approval" element={<VendorApprovalPage />} />
 
           {/* Product Management */}
           <Route path="products" element={<ProductsList />} />
@@ -72,6 +75,7 @@ function App() {
           {/* Driver Management */}
           <Route path="drivers" element={<DriversList />} />
           <Route path="drivers/:id" element={<DriverDetails />} />
+          <Route path="admin/driver-approval" element={<DriverApprovalPage />} />
 
           {/* Content Management */}
           <Route path="content/articles" element={<Articles />} />

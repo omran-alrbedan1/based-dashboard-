@@ -113,5 +113,29 @@
       "rating": "Rating",
       "products": "Products"
     }
+  },
+  "vendorApproval": {
+    "title": "Vendor Approval",
+    "description": "Review and approve new vendor registration requests.",
+    "emptyState": "No pending vendor approval requests.",
+    "filterTitle": "Filters",
+    "filterDescription": "Search and narrow down vendor approval requests.",
+    "benefitVisibleToCustomers": "Vendor will be visible to all customers",
+    "benefitVendorNotification": "Vendor will receive an approval notification",
+    "benefitBoostRanking": "Vendor will appear in search results",
+    "rejectionReasonEn": "Rejection Reason (English)",
+    "rejectionReasonEnPlaceholder": "Enter the reason in English...",
+    "rejectionReasonAr": "Rejection Reason (Arabic)",
+    "rejectionReasonArPlaceholder": "أدخل سبب الرفض بالعربية..."
+  },
+  "vendorApprovalCard": {
+    "owner": "Owner",
+    "email": "Email",
+    "phone": "Phone",
+    "area": "Area",
+    "type": "Type",
+    "submittedDate": "Submitted Date",
+    "viewDetails": "View Details",
+    "noResults": "No vendors match your filters"
   }
 }

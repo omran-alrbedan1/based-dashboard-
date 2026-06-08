@@ -18,25 +18,47 @@ import {
   MessageCircle,
   X,
   ShoppingBag,
+  ChevronDown,
 } from "lucide-react"
 import { images } from "@/constants/images"
 
 interface MenuItem {
   titleKey: string
-  path: string
+  path?: string
   icon: any
   notifs?: number
+  children?: MenuItem[]
 }
 
 const menuItems: MenuItem[] = [
   { titleKey: "sidebar.menu.dashboard", path: "/", icon: Home },
   { titleKey: "sidebar.menu.users", path: "/users", icon: Users },
-  { titleKey: "sidebar.menu.vendors", path: "/vendors", icon: Store, notifs: 3 },
-  { titleKey: "sidebar.menu.products", path: "/products", icon: ShoppingCart, notifs: 12 },
-  { titleKey: "sidebar.menu.productsApproval", path: "/admin/product-approval", icon: ClipboardList },
+  {
+    titleKey: "sidebar.menu.vendorsGroup",
+    icon: Store,
+    children: [
+      { titleKey: "sidebar.menu.vendors", path: "/vendors", icon: Store, notifs: 3 },
+      { titleKey: "sidebar.menu.vendorsApproval", path: "/admin/vendor-approval", icon: ClipboardList },
+    ],
+  },
+  {
+    titleKey: "sidebar.menu.productsGroup",
+    icon: ShoppingCart,
+    children: [
+      { titleKey: "sidebar.menu.products", path: "/products", icon: ShoppingCart, notifs: 12 },
+      { titleKey: "sidebar.menu.productsApproval", path: "/admin/product-approval", icon: ClipboardList },
+    ],
+  },
   { titleKey: "sidebar.menu.paymentsMonitoring", path: "/payments", icon: DollarSign },
   { titleKey: "sidebar.menu.orders", path: "/orders", icon: ShoppingBag },
-  { titleKey: "sidebar.menu.drivers", path: "/drivers", icon: Truck },
+  {
+    titleKey: "sidebar.menu.driversGroup",
+    icon: Truck,
+    children: [
+      { titleKey: "sidebar.menu.drivers", path: "/drivers", icon: Truck },
+      { titleKey: "sidebar.menu.driversApproval", path: "/admin/driver-approval", icon: ClipboardList },
+    ],
+  },
 ]
 
 const contentItems: MenuItem[] = [
@@ -181,18 +203,30 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ open, isMobile, onClose
           <div className="px-3 py-2 text-xs font-medium text-text-muted uppercase tracking-wide">
             {t("sidebar.sections.main")}
           </div>
-          {menuItems.map((item) => (
-            <Option
-              key={item.path}
-              Icon={item.icon}
-              titleKey={item.titleKey}
-              path={item.path}
-              currentPath={location.pathname}
-              notifs={item.notifs}
-              isMobile={isMobile}
-              onClose={onClose}
-            />
-          ))}
+          {menuItems.map((item) =>
+            item.children ? (
+              <GroupOption
+                key={item.titleKey}
+                Icon={item.icon}
+                titleKey={item.titleKey}
+                childrenItems={item.children}
+                currentPath={location.pathname}
+                isMobile={isMobile}
+                onClose={onClose}
+              />
+            ) : (
+              <Option
+                key={item.path}
+                Icon={item.icon}
+                titleKey={item.titleKey}
+                path={item.path!}
+                currentPath={location.pathname}
+                notifs={item.notifs}
+                isMobile={isMobile}
+                onClose={onClose}
+              />
+            )
+          )}
         </div>
 
         <div className="space-y-1 mb-6">
@@ -295,7 +329,6 @@ const Option: React.FC<OptionProps> = ({ Icon, titleKey, path, currentPath, noti
 
   const handleClick = () => {
     navigate(path)
-    // Close mobile menu after navigation
     if (isMobile && onClose) {
       onClose()
     }
@@ -327,6 +360,66 @@ const Option: React.FC<OptionProps> = ({ Icon, titleKey, path, currentPath, noti
         }`}>
           {notifs}
         </span>
+      )}
+    </div>
+  )
+}
+
+interface GroupOptionProps {
+  Icon: any
+  titleKey: string
+  childrenItems: MenuItem[]
+  currentPath: string
+  isMobile?: boolean
+  onClose?: () => void
+}
+
+const GroupOption: React.FC<GroupOptionProps> = ({ Icon, titleKey, childrenItems, currentPath, isMobile, onClose }) => {
+  const [expanded, setExpanded] = React.useState(
+    childrenItems.some((child) =>
+      child.path === "/"
+        ? currentPath === "/"
+        : child.path
+          ? currentPath === child.path || currentPath.startsWith(`${child.path}/`)
+          : false
+    )
+  )
+  const { t } = useTranslation()
+
+  return (
+    <div className="space-y-1">
+      <div
+        role="button"
+        tabIndex={0}
+        onClick={() => setExpanded((prev) => !prev)}
+        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setExpanded((prev) => !prev)}
+        className={`cursor-pointer relative flex h-11 w-full items-center rounded-md transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-ring text-text-secondary hover:bg-background-secondary hover:text-text`}
+      >
+        <div className="grid h-full w-12 place-content-center">
+          <Icon className="h-4 w-4 text-primary" />
+        </div>
+        <span className="text-sm font-medium flex-1">{t(titleKey)}</span>
+        <ChevronDown
+          className={`mr-3 h-4 w-4 text-text-muted transition-transform duration-200 ${
+            expanded ? 'rotate-0' : '-rotate-90'
+          }`}
+        />
+      </div>
+      {expanded && (
+        <div className="ml-4 mb-4 space-y-0.5">
+          {childrenItems.map((child) => (
+            <Option
+              key={child.path}
+              Icon={child.icon}
+              titleKey={child.titleKey}
+              path={child.path!}
+              currentPath={currentPath}
+              notifs={child.notifs}
+              isMobile={isMobile}
+              onClose={onClose}
+            />
+          ))}
+        </div>
       )}
     </div>
   )

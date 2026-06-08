@@ -169,5 +169,10 @@
     "vehicleColor": "لون المركبة",
     "vehiclePlate": "لوحة المركبة",
     "licenseNumber": "رقم الرخصة"
+  },
+  "driverApproval": {
+    "title": "موافقة السائق",
+    "description": "مراجعة والموافقة على طلبات تسجيل السائقين الجدد.",
+    "emptyState": "لا توجد طلبات موافقة سائق معلقة."
   }
 }

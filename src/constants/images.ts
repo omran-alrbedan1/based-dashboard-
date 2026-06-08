@@ -14,6 +14,7 @@ import emptyDrivers from '@/assets/images/emptyDrivers.svg'
 import vendors from '@/assets/images/vendors.svg'
 import emptyVendors from '@/assets/images/emptyVendors.svg'
 import packages from '@/assets/images/package.svg'
+import store from '@/assets/images/store.svg'
 
 //// icons 
 import nationalId from '@/assets/icons/id-card.svg'
@@ -39,7 +40,8 @@ export const images = {
     emptyDrivers,
     vendors,
     emptyVendors,
-    packages
+    packages,
+    store
 }
 
 export const icons = {

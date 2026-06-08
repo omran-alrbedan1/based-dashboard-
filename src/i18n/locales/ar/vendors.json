@@ -113,5 +113,29 @@
       "rating": "التقييم",
       "products": "المنتجات"
     }
+  },
+  "vendorApproval": {
+    "title": "موافقة البائع",
+    "description": "مراجعة والموافقة على طلبات تسجيل البائعين الجدد.",
+    "emptyState": "لا توجد طلبات موافقة بائع معلقة.",
+    "filterTitle": "الفلاتر",
+    "filterDescription": "ابحث وقم بتصفية طلبات الموافقة على البائعين.",
+    "benefitVisibleToCustomers": "سيظهر البائع لجميع العملاء",
+    "benefitVendorNotification": "سيتم إشعار البائع بالموافقة",
+    "benefitBoostRanking": "سيظهر البائع في نتائج البحث",
+    "rejectionReasonEn": "سبب الرفض (إنجليزي)",
+    "rejectionReasonEnPlaceholder": "أدخل سبب الرفض بالإنجليزية...",
+    "rejectionReasonAr": "سبب الرفض (عربي)",
+    "rejectionReasonArPlaceholder": "أدخل سبب الرفض بالعربية..."
+  },
+  "vendorApprovalCard": {
+    "owner": "المالك",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "area": "المنطقة",
+    "type": "النوع",
+    "submittedDate": "تاريخ التقديم",
+    "viewDetails": "عرض التفاصيل",
+    "noResults": "لا يوجد بائعون يطابقون فلترتك"
   }
 }
