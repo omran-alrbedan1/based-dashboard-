@@ -1,3 +1,5 @@
+import i18n from "@/i18n/config";
+
 export const formatPhoneNumber = (value: string) => {
   const phoneNumber = value.replace(/\D/g, '');
   const phoneNumberLength = phoneNumber.length;
@@ -61,4 +63,8 @@ export function formatJoinedDate(date: string | null | undefined, locale: string
     month: 'long',
     day: 'numeric',
   });
+}
+export const formatDate = (dateStr: string): string => {
+  const locale = i18n.language === 'ar' ? 'ar-EG' : 'en-US'
+  return new Date(dateStr).toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' })
 }

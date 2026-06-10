@@ -8,7 +8,7 @@ import {
   Ban
 } from "lucide-react"
 
-export type StatusType = "Pending" | "Approved" | "Rejected" | "Active" | "Inactive" | "Completed" | "Cancelled"
+export type StatusType = "Pending" | "Approved" | "Rejected" | "Active" | "Suspended" | "Inactive" | "Completed" | "Cancelled"
 
 interface StatusBadgeProps {
   status: StatusType
@@ -50,6 +50,14 @@ const statusConfig: Record<StatusType, { icon: React.ElementType; lightBg: strin
     border: "border-emerald-200",
     softBg: "bg-emerald-100",
     softText: "text-emerald-800"
+  },
+  Suspended: {
+    icon: Ban,
+    lightBg: "bg-red-50",
+    lightText: "text-red-700",
+    border: "border-red-200",
+    softBg: "bg-red-100",
+    softText: "text-red-800"
   },
   Inactive: {
     icon: Circle,

@@ -17,7 +17,7 @@ import { CancelButton, SubmitButton } from '@/components/shared/buttons'
 
 interface RejectModalProps {
   open: boolean
-  onConfirm: (reason?: string) => void
+  onConfirm: (reason: string) => void
   onClose: () => void
   loading?: boolean
   name: string
@@ -44,7 +44,7 @@ const RejectModal: React.FC<RejectModalProps> = ({
   })
 
   const handleSubmit = (data: RejectFormValues) => {
-    onConfirm(data.reason)
+    onConfirm(data.reason || '')
   }
 
   return (

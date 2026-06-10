@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import type { VendorApprovalRequest } from '@/features/vendors/data/vendorApproval.data'
-import { Card, CardContent, CardFooter } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import {
   Store,
   User,
@@ -24,7 +25,6 @@ import {
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu'
 import { ApproveModal, RejectModal } from '@/components/shared/modals'
-import { StatusBadge } from '@/components/shared/badges'
 import { useVendorApproval } from '../hooks/useVendorApproval'
 
 interface VendorApprovalCardProps {
@@ -34,6 +34,7 @@ interface VendorApprovalCardProps {
 
 const VendorApprovalCard: React.FC<VendorApprovalCardProps> = ({ request, onUpdate }) => {
   const { t, i18n } = useTranslation('vendors')
+  const navigate = useNavigate()
   const { updateStatus } = useVendorApproval()
   const [approveOpen, setApproveOpen] = useState(false)
   const [rejectOpen, setRejectOpen] = useState(false)
@@ -53,7 +54,7 @@ const VendorApprovalCard: React.FC<VendorApprovalCardProps> = ({ request, onUpda
     }
   }
 
-  const handleReject = async (reason?: string) => {
+  const handleReject = async (reason: string) => {
     setProcessing(true)
     try {
       await updateStatus(request.id, 'Rejected', { en: reason || '', ar: '' })
@@ -87,7 +88,7 @@ const VendorApprovalCard: React.FC<VendorApprovalCardProps> = ({ request, onUpda
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
-                <DropdownMenuItem className="cursor-not-allowed opacity-50" disabled>
+                <DropdownMenuItem onClick={() => navigate(`/admin/vendor-approval/${request.id}`)}>
                   <Eye className="mr-2 h-4 w-4" />
                   {t('vendorApprovalCard.viewDetails')}
                 </DropdownMenuItem>

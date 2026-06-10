@@ -79,7 +79,7 @@ const SuspendModal: React.FC<SuspendModalProps> = ({
               />
             </div>
 
-            <DialogFooter className="gap-2 sm:gap-2 mt-4 w-fit ml-auto">
+            <DialogFooter className="flex-row gap-2 mt-4">
               <CancelButton
                 onClick={onClose}
                 disabled={loading}

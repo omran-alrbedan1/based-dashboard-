@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import { CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
+import { useTranslation } from "react-i18next"
 import { DateOption } from "@/types/customFormField.types"
 
 interface DatePickerFieldProps {
@@ -19,7 +20,21 @@ export const DatePickerField: React.FC<DatePickerFieldProps> = ({
   disabled,
   inputClassName,
 }) => {
+  const { t } = useTranslation("common")
   const [open, setOpen] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setOpen(false)
+      }
+    }
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside)
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [open])
 
   const getDisabled = () => {
     const disabledOptions: any = {}
@@ -43,7 +58,7 @@ export const DatePickerField: React.FC<DatePickerFieldProps> = ({
   }
 
   return (
-    <div className="relative">
+    <div className="relative" ref={containerRef}>
       <Button
         type="button"
         variant="outline"
@@ -59,11 +74,11 @@ export const DatePickerField: React.FC<DatePickerFieldProps> = ({
         {field.value ? (
           format(new Date(field.value), dateOptions?.format || "PPP")
         ) : (
-          dateOptions?.placeholder || "Pick a date"
+          dateOptions?.placeholder || t("datePicker.placeholder")
         )}
       </Button>
       {open && (
-        <div className="absolute top-full z-50 mt-1 bg-white border rounded-md shadow-lg">
+        <div className="absolute top-full z-50 mt-1 bg-white border rounded-md shadow-lg min-w-[280px]">
           <Calendar
             mode="single"
             selected={field.value ? new Date(field.value) : undefined}
@@ -72,7 +87,7 @@ export const DatePickerField: React.FC<DatePickerFieldProps> = ({
               setOpen(false)
             }}
             disabled={getDisabled()}
-            className="rounded-md"
+            className="rounded-md w-full"
           />
         </div>
       )}

@@ -66,23 +66,23 @@ const PageHeader: React.FC<PageHeaderProps> = ({
                             variant="ghost"
                             size="sm"
                             onClick={handleBackClick}
-                            className="mb-1 -ml-2 text-text-secondary hover:text-text transition-all duration-200 hover:translate-x-[-2px]"
+                            className="mb-1 -ms-2 text-text-secondary hover:text-text transition-all duration-200 hover:translate-x-[-2px] rtl:hover:translate-x-[2px]"
                         >
-                            <ArrowLeft className="mr-2 h-4 w-4" />
+                            <ArrowLeft className="me-2 h-4 w-4 rtl:rotate-180" />
                             {backButtonLabel || "Back"}
                         </Button>
                     )}
 
                     <div className="space-y-2">
                         {/* Title */}
-                        <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-transparent pr-12">
+                        <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-text-primary to-text-secondary bg-clip-text text-transparent pe-12 text-start">
                             {title}
                         </h1>
 
                         {/* Description and metadata */}
                         <div className="space-y-1.5">
                             {description && (
-                                <p className="text-sm text-text-muted max-w-2xl pr-12">
+                                <p className="text-sm text-text-muted max-w-2xl pe-12 text-start">
                                     {description}
                                 </p>
                             )}

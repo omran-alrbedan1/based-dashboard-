@@ -15,7 +15,7 @@ import { Option } from '@/types/customFormField.types';
 export interface FilterField<T extends FieldValues> {
   name: Path<T>;
   label: string;
-  type: 'text' | 'select' | 'date-range';
+  type: 'text' | 'select' | 'date' | 'date-range';
   placeholder?: string;
   icon: LucideIcon;
   minWidth?: string;
@@ -33,6 +33,7 @@ interface CustomFilterProps<T extends FieldValues> {
   isLoading?: boolean;
   initialFilters?: Partial<T>;
   title?: string;
+  className?: string;
 }
 
 function isFieldActive<T extends FieldValues>(
@@ -49,6 +50,8 @@ function isFieldActive<T extends FieldValues>(
     }
     case 'text':
       return typeof value === 'string' && value.trim() !== '';
+    case 'date':
+      return value instanceof Date || (typeof value === 'string' && value.trim() !== '');
     case 'select':
       return value !== empty && value !== undefined && value !== null && value !== '';
     default:
@@ -74,6 +77,7 @@ function defaultBadgeLabel<T extends FieldValues>(
     return `${from} – ${to}`;
   }
 
+  if (value instanceof Date) return format(value, 'MMM d, yyyy');
   const str = String(value);
   return str.length > 24 ? `${str.slice(0, 24)}…` : str;
 }
@@ -86,6 +90,7 @@ export function CustomFilter<T extends FieldValues>({
   isLoading = false,
   initialFilters,
   title = 'Filters',
+  className = '',
 }: CustomFilterProps<T>) {
   const { t } = useTranslation('common');
   const form = useForm<T>({ 
@@ -137,11 +142,12 @@ export function CustomFilter<T extends FieldValues>({
   const fieldTypeMap: Record<FilterField<T>['type'], FormFieldType> = {
     text: FormFieldType.INPUT,
     select: FormFieldType.SELECT,
+    date: FormFieldType.DATE_PICKER,
     'date-range': FormFieldType.DATE_RANGE,
   };
 
   return (
-    <div className="rounded-lg border bg-card p-3 sm:p-4 shadow-sm transition-shadow duration-200 hover:shadow-md">
+    <div className={"rounded-lg border bg-card p-3 sm:p-4 shadow-sm transition-shadow duration-200 hover:shadow-md " + className}>
       {/* Header */}
       <div className="mb-3 sm:mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-2">

@@ -26,6 +26,11 @@
     "area": {
       "label": "المنطقة",
       "all": "كل المناطق"
+    },
+    "vehicleType": {
+      "all": "كل الأنواع",
+      "car": "سيارة",
+      "motorcycle": "دراجة نارية"
     }
   },
   "table": {
@@ -146,7 +151,8 @@
     "backToList": "العودة إلى قائمة السائقين",
     "activateButton": "تفعيل السائق",
     "suspendButton": "إيقاف السائق",
-    "sendMessage": "إرسال رسالة"
+    "sendMessage": "إرسال رسالة",
+    "reject": "سبب الرفض"
   },
   "tabs": {
     "overview": "نظرة عامة",
@@ -173,6 +179,62 @@
   "driverApproval": {
     "title": "موافقة السائق",
     "description": "مراجعة والموافقة على طلبات تسجيل السائقين الجدد.",
-    "emptyState": "لا توجد طلبات موافقة سائق معلقة."
+    "emptyState": "لا توجد طلبات موافقة سائق معلقة.",
+    "filterTitle": "الفلاتر",
+    "filterDescription": "ابحث وقم بتصفية طلبات الموافقة على السائقين."
+  },
+  "status": {
+    "pending": "قيد المراجعة",
+    "approved": "مقبول",
+    "rejected": "مرفوض"
+  },
+  "driverApprovalCard": {
+    "driverName": "اسم السائق",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "vehicleModel": "موديل المركبة",
+    "vehicleType": "نوع المركبة",
+    "vehiclePlate": "لوحة المركبة",
+    "address": "العنوان",
+    "submittedDate": "تاريخ التقديم",
+    "viewDetails": "عرض التفاصيل",
+    "noResults": "لا يوجد سائقون يطابقون فلترتك"
+  },
+  "approvalDetails": {
+    "sectionPersonal": "المعلومات الشخصية",
+    "sectionVehicle": "معلومات المركبة",
+    "sectionDocuments": "المستندات",
+    "sectionAdditional": "معلومات إضافية",
+    "gender": "الجنس",
+    "male": "ذكر",
+    "female": "أنثى",
+    "dateOfBirth": "تاريخ الميلاد",
+    "nationalId": "الرقم القومي",
+    "vehicleModel": "الموديل",
+    "vehicleColor": "اللون",
+    "vehiclePlate": "رقم اللوحة",
+    "licenseNumber": "رقم الرخصة",
+    "experience": "الخبرة",
+    "experienceYears": "{{count}} سنة",
+    "preferredAreas": "مناطق العمل المفضلة",
+    "bankName": "اسم البنك",
+    "iban": "IBAN",
+    "emergencyContact": "جهة اتصال للطوارئ",
+    "emergencyContactName": "اسم جهة الاتصال",
+    "emergencyContactPhone": "هاتف جهة الاتصال",
+    "documentStatus": "الحالة",
+    "documentExpires": "تنتهي في",
+    "documentExpired": "منتهية الصلاحية",
+    "documentVerified": "تم التحقق",
+    "documentPending": "قيد المراجعة",
+    "documentNotUploaded": "غير مرفوعة",
+    "documentPreview": "معاينة",
+    "documentDownload": "تحميل",
+    "identityVerified": "الهوية موثقة",
+    "vehicleVerified": "المركبة موثقة",
+    "documentsVerified": "المستندات موثقة",
+    "ageRequirement": "شرط العمر",
+    "ageMet": "مستوفي",
+    "ageNotMet": "غير مستوفي (الحد الأدنى 21)"
   }
 }

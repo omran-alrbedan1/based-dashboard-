@@ -43,6 +43,17 @@ class VendorApprovalService {
     return vendors
   }
 
+  async getVendorApprovalRequestById(id: string): Promise<VendorApprovalRequest> {
+    await this.delay()
+
+    const vendor = vendorApprovalRequests.find((r) => r.id === id)
+    if (!vendor) {
+      throw new Error('Vendor approval request not found')
+    }
+
+    return { ...vendor }
+  }
+
   async updateVendorApprovalStatus(
     id: string,
     status: VendorApprovalStatus,

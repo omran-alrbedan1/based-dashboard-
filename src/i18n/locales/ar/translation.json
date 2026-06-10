@@ -58,6 +58,10 @@
     "product": "المنتج",
     "submittedDate": "تاريخ الإرسال",
     "emptyState": "لا توجد طلبات موافقة حالياً",
+    "emptyTitle": "لا توجد طلبات موافقة",
+    "emptyDescription": "لا توجد طلبات موافقة على المنتجات في الوقت الحالي. ستظهر الطلبات الجديدة هنا.",
+    "noResultsTitle": "لا توجد منتجات مطابقة",
+    "noResultsDescription": "لا توجد منتجات تطابق الفلاتر الحالية. حاول تعديلها أو إعادة تعيينها.",
     "review": "مراجعة",
     "productInformation": "معلومات المنتج",
     "productName": "اسم المنتج",
@@ -105,6 +109,8 @@
     "productApproved": "تمت الموافقة على المنتج بنجاح",
     "productRejected": "تم رفض المنتج بنجاح",
     "notFoundTitle": "المنتج غير موجود",
-    "notFoundDescription": "سجل الموافقة المطلوب غير موجود."
+    "notFoundDescription": "سجل الموافقة المطلوب غير موجود.",
+    "errorTitle": "حدث خطأ ما",
+    "errorDescription": "فشل في تحميل طلبات الموافقة على المنتجات. يرجى المحاولة مرة أخرى."
   }
 }

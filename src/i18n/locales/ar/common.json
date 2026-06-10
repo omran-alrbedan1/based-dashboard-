@@ -112,6 +112,15 @@
   "version": "الإصدار",
   "apply": "تطبيق",
   "activeFilters": "عوامل التصفية النشطة:",
+  "datePicker": {
+    "placeholder": "اختر تاريخًا"
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "previousAria": "الانتقال إلى الصفحة السابقة",
+    "nextAria": "الانتقال إلى الصفحة التالية"
+  },
   "modals": {
     "cancel": "إلغاء",
     "processing": "جاري المعالجة...",

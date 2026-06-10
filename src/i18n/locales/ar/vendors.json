@@ -128,6 +128,10 @@
     "rejectionReasonAr": "سبب الرفض (عربي)",
     "rejectionReasonArPlaceholder": "أدخل سبب الرفض بالعربية..."
   },
+  "vendorApprovalDetails": {
+    "pageTitle": "تفاصيل طلب الموافقة",
+    "backToList": "العودة إلى قائمة الموافقات"
+  },
   "vendorApprovalCard": {
     "owner": "المالك",
     "email": "البريد الإلكتروني",

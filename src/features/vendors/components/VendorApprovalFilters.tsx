@@ -69,6 +69,7 @@ const VendorApprovalFilters: React.FC<VendorApprovalFiltersProps> = ({
       onResetFilters={onResetFilters}
       isLoading={isLoading}
       initialFilters={initialFilters}
+        
     />
   )
 }

@@ -15,6 +15,8 @@ import vendors from '@/assets/images/vendors.svg'
 import emptyVendors from '@/assets/images/emptyVendors.svg'
 import packages from '@/assets/images/package.svg'
 import store from '@/assets/images/store.svg'
+import avatarPlaceholder from '@/assets/images/avatar-placeholder.svg'
+import usersManagement from '@/assets/images/usersManagement.svg'
 
 //// icons 
 import nationalId from '@/assets/icons/id-card.svg'
@@ -41,7 +43,9 @@ export const images = {
     vendors,
     emptyVendors,
     packages,
-    store
+    store,
+    avatarPlaceholder,
+    usersManagement
 }
 
 export const icons = {

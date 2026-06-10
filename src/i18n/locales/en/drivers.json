@@ -26,6 +26,11 @@
     "area": {
       "label": "Area",
       "all": "All Areas"
+    },
+    "vehicleType": {
+      "all": "All Types",
+      "car": "Car",
+      "motorcycle": "Motorcycle"
     }
   },
   "table": {
@@ -145,7 +150,8 @@
     "backToList": "Back to Drivers List",
     "activateButton": "Activate Driver",
     "suspendButton": "Suspend Driver",
-    "sendMessage": "Send Message"
+    "sendMessage": "Send Message",
+    "reject": "Rejection Reason"
   },
   "tabs": {
     "overview": "Overview",
@@ -172,6 +178,62 @@
   "driverApproval": {
     "title": "Driver Approval",
     "description": "Review and approve new driver registration requests.",
-    "emptyState": "No pending driver approval requests."
+    "emptyState": "No pending driver approval requests.",
+    "filterTitle": "Filters",
+    "filterDescription": "Search and narrow down driver approval requests."
+  },
+  "status": {
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected"
+  },
+  "driverApprovalCard": {
+    "driverName": "Driver Name",
+    "email": "Email",
+    "phone": "Phone",
+    "vehicleModel": "Vehicle Model",
+    "vehicleType": "Vehicle Type",
+    "vehiclePlate": "Vehicle Plate",
+    "address": "Address",
+    "submittedDate": "Submitted Date",
+    "viewDetails": "View Details",
+    "noResults": "No drivers match your filters"
+  },
+  "approvalDetails": {
+    "sectionPersonal": "Personal Information",
+    "sectionVehicle": "Vehicle Information",
+    "sectionDocuments": "Documents",
+    "sectionAdditional": "Additional Information",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "dateOfBirth": "Date of Birth",
+    "nationalId": "National ID",
+    "vehicleModel": "Model",
+    "vehicleColor": "Color",
+    "vehiclePlate": "Plate Number",
+    "licenseNumber": "License Number",
+    "experience": "Experience",
+    "experienceYears": "{{count}} year(s)",
+    "preferredAreas": "Preferred Work Areas",
+    "bankName": "Bank Name",
+    "iban": "IBAN",
+    "emergencyContact": "Emergency Contact",
+    "emergencyContactName": "Contact Name",
+    "emergencyContactPhone": "Contact Phone",
+    "documentStatus": "Status",
+    "documentExpires": "Expires",
+    "documentExpired": "Expired",
+    "documentVerified": "Verified",
+    "documentPending": "Pending Review",
+    "documentNotUploaded": "Not Uploaded",
+    "documentPreview": "Preview",
+    "documentDownload": "Download",
+    "identityVerified": "Identity Verified",
+    "vehicleVerified": "Vehicle Verified",
+    "documentsVerified": "Documents Verified",
+    "ageRequirement": "Age Requirement",
+    "ageMet": "Met",
+    "ageNotMet": "Not Met (min 21)"
   }
 }

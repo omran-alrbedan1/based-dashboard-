@@ -3,13 +3,14 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import MainLayout from "./components/layout/MainLayout"
 import Dashboard from "./features/dashboard/pages/Dashboard"
 import Login from "./features/auth/pages/Login"
-import ProductsList from "./features/products/ProductsList"
-import ProductReview from "./features/products/ProductReview"
-import ProductApprovalPage from "./features/productApproval/pages/ProductApprovalPage"
-import ProductApprovalDetailsPage from "./features/productApproval/pages/ProductApprovalDetailsPage"
+import ProductsList from "./features/products/pages/ProductsListPage"
+import ProductReview from "./features/products/pages/ProductDetailsPage"
+import ProductApprovalPage from "./features/products/pages/ProductApprovalPage"
+import ProductApprovalDetailsPage from "./features/products/pages/ProductApprovalDetailsPage"
 import DriversList from "./features/drivers/pages/DriversList"
 import DriverDetails from "./features/drivers/pages/DriverDetails"
 import DriverApprovalPage from "./features/drivers/pages/DriverApprovalPage"
+import DriverApprovalDetailsPage from "./features/drivers/pages/DriverApprovalDetailsPage"
 import Articles from "./features/content/pages/Articles"
 import Videos from "./features/content/pages/Videos"
 import Guides from "./features/content/pages/Guides"
@@ -25,6 +26,7 @@ import UsersList from "./features/users/pages/UsersList"
 import VendorsList from "./features/vendors/pages/VendorsList"
 import VendorDetails from "./features/vendors/pages/VendorDetails"
 import VendorApprovalPage from "./features/vendors/pages/VendorApprovalPage"
+import VendorApprovalDetailsPage from "./features/vendors/pages/VendorApprovalDetailsPage"
 import OrdersListPage from "./features/orders/pages/OrdersListPage"
 import UserDetails from "./features/users/pages/UserDetails"
 import OrderDetailsPage from "./features/orders/pages/OrderDetailsPage"
@@ -56,6 +58,7 @@ function App() {
           <Route path="vendors" element={<VendorsList />} />
           <Route path="vendors/:id" element={<VendorDetails />} />
           <Route path="admin/vendor-approval" element={<VendorApprovalPage />} />
+          <Route path="admin/vendor-approval/:id" element={<VendorApprovalDetailsPage />} />
 
           {/* Product Management */}
           <Route path="products" element={<ProductsList />} />
@@ -76,6 +79,7 @@ function App() {
           <Route path="drivers" element={<DriversList />} />
           <Route path="drivers/:id" element={<DriverDetails />} />
           <Route path="admin/driver-approval" element={<DriverApprovalPage />} />
+          <Route path="admin/driver-approval/:id" element={<DriverApprovalDetailsPage />} />
 
           {/* Content Management */}
           <Route path="content/articles" element={<Articles />} />

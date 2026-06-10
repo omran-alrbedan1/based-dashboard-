@@ -71,7 +71,7 @@ const VendorDetails: React.FC = () => {
     refetch()
   }
 
-  const handleReject = async (reason?: string) => {
+  const handleReject = async (_reason: string) => {
     setModalAction(null)
     refetch()
   }

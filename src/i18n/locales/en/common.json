@@ -112,6 +112,15 @@
   "version": "Version",
   "apply": "Apply",
   "activeFilters": "Active filters:",
+  "datePicker": {
+    "placeholder": "Pick a date"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "previousAria": "Go to previous page",
+    "nextAria": "Go to next page"
+  },
   "modals": {
     "cancel": "Cancel",
     "processing": "Processing...",

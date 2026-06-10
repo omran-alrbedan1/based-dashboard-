@@ -58,6 +58,10 @@
     "product": "Product",
     "submittedDate": "Submitted Date",
     "emptyState": "No pending approval requests",
+    "emptyTitle": "No approval requests",
+    "emptyDescription": "There are no product approval requests at the moment. New requests will appear here.",
+    "noResultsTitle": "No matching products",
+    "noResultsDescription": "No products match your current filters. Try adjusting or clearing them.",
     "review": "Review",
     "productInformation": "Product Information",
     "productName": "Product Name",
@@ -105,6 +109,8 @@
     "productApproved": "Product approved successfully",
     "productRejected": "Product rejected successfully",
     "notFoundTitle": "Product not found",
-    "notFoundDescription": "The requested approval record does not exist."
+    "notFoundDescription": "The requested approval record does not exist.",
+    "errorTitle": "Something went wrong",
+    "errorDescription": "Failed to load product approval requests. Please try again."
   }
 }

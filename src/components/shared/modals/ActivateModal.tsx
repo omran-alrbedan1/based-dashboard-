@@ -50,7 +50,7 @@ const ActivateModal: React.FC<ActivateModalProps> = ({
         </DialogHeader>
 
         {/* Actions */}
-        <DialogFooter className="gap-2 sm:gap-2 mt-6 w-full">
+        <DialogFooter className="flex-row gap-2 mt-6 w-full">
           <CancelButton
             onClick={onClose}
             disabled={loading}
