@@ -47,16 +47,16 @@ const EmptyState: React.FC<EmptyStateProps> = ({
           className="w-48 h-48 mb-6 object-contain"
         />
       ) : (
-        <div className="mb-6 rounded-full bg-gray-100 p-4">
-          <Icon className="w-16 h-16 text-gray-400" />
+        <div className="mb-6 rounded-full bg-background-secondary p-4">
+          <Icon className="w-16 h-16 text-primary" />
         </div>
       )}
 
-      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+      <h3 className="text-xl font-semibold text-text-primary mb-2">
         {title}
       </h3>
       
-      <p className="text-gray-500 max-w-md mb-6">
+      <p className="text-text-secondary max-w-md mb-6">
         {description}
       </p>
 

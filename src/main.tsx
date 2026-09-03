@@ -5,6 +5,7 @@ import './index.css'
 import './i18n/config'
 import App from './App'
 import { ThemeProvider } from './components/theme-provider'
+import { AuthProvider } from './features/auth/context/AuthContext'
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
@@ -24,9 +25,11 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <React.Suspense fallback="Loading...">
       <ThemeProvider defaultTheme="dark">
-        <QueryClientProvider client={queryClient}>
-          <App />
-        </QueryClientProvider>
+        <AuthProvider>
+          <QueryClientProvider client={queryClient}>
+            <App />
+          </QueryClientProvider>
+        </AuthProvider>
       </ThemeProvider>
     </React.Suspense>
   </StrictMode>,

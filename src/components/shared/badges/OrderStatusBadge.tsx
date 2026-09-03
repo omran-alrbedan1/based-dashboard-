@@ -9,9 +9,13 @@ import {
   XCircle,
   X
 } from "lucide-react";
-import { OrderStatus } from '@/features/orders/types/orders.types';
-
-export type OrderStatusType = OrderStatus;
+export type OrderStatusType =
+  | 'pending'
+  | 'accepted'
+  | 'preparing'
+  | 'on_delivery'
+  | 'delivered'
+  | 'cancelled';
 
 interface OrderStatusBadgeProps {
   status: OrderStatusType;

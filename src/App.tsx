@@ -3,40 +3,29 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import MainLayout from "./components/layout/MainLayout"
 import Dashboard from "./features/dashboard/pages/Dashboard"
 import Login from "./features/auth/pages/Login"
-import ProductsList from "./features/products/pages/ProductsListPage"
-import ProductReview from "./features/products/pages/ProductDetailsPage"
-import ProductApprovalPage from "./features/products/pages/ProductApprovalPage"
-import ProductApprovalDetailsPage from "./features/products/pages/ProductApprovalDetailsPage"
-import DriversList from "./features/drivers/pages/DriversList"
-import DriverDetails from "./features/drivers/pages/DriverDetails"
-import DriverApprovalPage from "./features/drivers/pages/DriverApprovalPage"
-import DriverApprovalDetailsPage from "./features/drivers/pages/DriverApprovalDetailsPage"
-import Articles from "./features/content/pages/Articles"
-import Videos from "./features/content/pages/Videos"
-import Guides from "./features/content/pages/Guides"
-import Posts from "./features/community/pages/Posts"
-import CommunityReports from "./features/community/pages/Reports"
-import SalesReports from "./features/reports/pages/SalesReports"
-import VendorReports from "./features/reports/pages/VendorReports"
-import DeliveryReports from "./features/reports/pages/DeliveryReports"
-import UserReports from "./features/reports/pages/UserReports"
-import PaymentsMonitoringPage from "./features/payments/pages/PaymentsMonitoringPage"
-import PaymentDetailsPage from "./features/payments/pages/PaymentDetailsPage"
-import UsersList from "./features/users/pages/UsersList"
-import VendorsList from "./features/vendors/pages/VendorsList"
-import VendorDetails from "./features/vendors/pages/VendorDetails"
-import VendorApprovalPage from "./features/vendors/pages/VendorApprovalPage"
-import VendorApprovalDetailsPage from "./features/vendors/pages/VendorApprovalDetailsPage"
-import OrdersListPage from "./features/orders/pages/OrdersListPage"
-import UserDetails from "./features/users/pages/UserDetails"
-import OrderDetailsPage from "./features/orders/pages/OrderDetailsPage"
+import CustomersListPage from "./features/customers/pages/customers-list.page"
+import CustomerCreatePage from "./features/customers/pages/customer-create.page"
+import CustomerDetailsPage from "./features/customers/pages/customer-details.page"
+import MaintenanceListPage from "./features/maintenance/pages/maintenance-list.page"
+import ReceiptCreatePage from "./features/maintenance/pages/receipt-create.page"
+import ReceiptDetailsPage from "./features/maintenance/pages/receipt-details.page"
+import ProfilePage from "./features/staff/pages/ProfilePage"
+import SettingsPage from "./features/settings/pages/SettingsPage"
+import { useAuth } from "./features/auth/context/AuthContext"
+import type { ReactNode } from "react"
 
 interface PrivateRouteProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 function PrivateRoute({ children }: PrivateRouteProps) {
-  return children
+  const { isAuthenticated } = useAuth()
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />
+  }
+
+  return <>{children}</>
 }
 
 function App() {
@@ -50,51 +39,21 @@ function App() {
         <Route path="/" element={<PrivateRoute><MainLayout /></PrivateRoute>}>
           <Route index element={<Dashboard />} />
 
-          {/* User Management */}
-          <Route path="users" element={<UsersList />} />
-          <Route path="users/:id" element={<UserDetails />} />
+          {/* Customers */}
+          <Route path="customers" element={<CustomersListPage />} />
+          <Route path="customers/new" element={<CustomerCreatePage />} />
+          <Route path="customers/:customerId" element={<CustomerDetailsPage />} />
 
-          {/* Vendor Management */}
-          <Route path="vendors" element={<VendorsList />} />
-          <Route path="vendors/:id" element={<VendorDetails />} />
-          <Route path="admin/vendor-approval" element={<VendorApprovalPage />} />
-          <Route path="admin/vendor-approval/:id" element={<VendorApprovalDetailsPage />} />
+          {/* Maintenance */}
+          <Route path="maintenance" element={<MaintenanceListPage />} />
+          <Route path="maintenance/new" element={<ReceiptCreatePage />} />
+          <Route path="maintenance/:cardId" element={<ReceiptDetailsPage />} />
 
-          {/* Product Management */}
-          <Route path="products" element={<ProductsList />} />
-          <Route path="admin/product-approval" element={<ProductApprovalPage />} />
-          <Route path="admin/product-approval/:id" element={<ProductApprovalDetailsPage />} />
-          {/* Approval Subroutes */}
-          <Route path="products/:id" element={<ProductReview />} />
+          {/* Profile */}
+          <Route path="profile" element={<ProfilePage />} />
 
-          {/*Payments management   */}
-          <Route path="payments" element={<PaymentsMonitoringPage />} />
-          <Route path="payments/:id" element={<PaymentDetailsPage />} />
-
-          {/* Order Management */}
-          <Route path="orders" element={<OrdersListPage />} />
-          <Route path="orders/:id" element={<OrderDetailsPage />} />
-
-          {/* Driver Management */}
-          <Route path="drivers" element={<DriversList />} />
-          <Route path="drivers/:id" element={<DriverDetails />} />
-          <Route path="admin/driver-approval" element={<DriverApprovalPage />} />
-          <Route path="admin/driver-approval/:id" element={<DriverApprovalDetailsPage />} />
-
-          {/* Content Management */}
-          <Route path="content/articles" element={<Articles />} />
-          <Route path="content/videos" element={<Videos />} />
-          <Route path="content/guides" element={<Guides />} />
-
-          {/* Community Management */}
-          <Route path="community/posts" element={<Posts />} />
-          <Route path="community/reports" element={<CommunityReports />} />
-
-          {/* Reports */}
-          <Route path="reports/sales" element={<SalesReports />} />
-          <Route path="reports/vendors" element={<VendorReports />} />
-          <Route path="reports/delivery" element={<DeliveryReports />} />
-          <Route path="reports/users" element={<UserReports />} />
+          {/* Settings */}
+          <Route path="settings" element={<SettingsPage />} />
         </Route>
 
         {/* Catch all */}

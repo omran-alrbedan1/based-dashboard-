@@ -1,0 +1,88 @@
+{
+  "title": "الزبائن",
+  "subtitle": "إدارة ملفات الزبائن والمركبات",
+  "addCustomer": "إضافة زبون",
+  "editCustomer": "تعديل الزبون",
+  "searchPlaceholder": "ابحث بالاسم، الهاتف، اللوحة، رقم الشاصي...",
+  "noResults": "لم يتم العثور على زبائن مطابقين",
+  "createdAt": "تاريخ التسجيل",
+  "updatedAt": "آخر تحديث",
+  "empty": "لم يتم تسجيل أي زبون بعد",
+  "details": "تفاصيل الزبون",
+  "backToList": "العودة للقائمة",
+  "fields": {
+    "name": "الاسم",
+    "phone": "رقم الهاتف",
+    "email": "البريد الإلكتروني",
+    "address": "العنوان",
+    "notes": "ملاحظات"
+  },
+  "validation": {
+    "nameRequired": "الاسم مطلوب",
+    "nameMin": "الاسم يجب أن يكون 3 أحرف على الأقل",
+    "phoneRequired": "رقم الهاتف مطلوب",
+    "phoneInvalid": "رقم الهاتف غير صالح",
+    "emailInvalid": "البريد الإلكتروني غير صالح"
+  },
+  "filter": {
+    "name": "الاسم",
+    "phone": "رقم الهاتف",
+    "plateNumber": "رقم اللوحة",
+    "vin": "رقم الشاصي (VIN)",
+    "make": "الصنّ",
+    "model": "الموديل"
+  },
+  "table": {
+    "name": "الاسم",
+    "phone": "الهاتف",
+    "vehicles": "المركبات",
+    "createdAt": "تاريخ التسجيل",
+    "actions": "الإجراءات"
+  },
+  "vehicles": {
+    "title": "المركبات",
+    "addVehicle": "إضافة مركبة",
+    "noVehicles": "لا توجد مركبات لهذا الزبون",
+    "fields": {
+      "make": "الصنّ",
+      "model": "الموديل",
+      "plateNumber": "رقم اللوحة",
+      "vin": "رقم الشاصي (VIN)",
+      "year": "السنة",
+      "mileage": "العداد (كم)",
+      "fuelType": "نوع الوقود",
+      "transmissionType": "ناقل الحركة",
+      "color": "اللون",
+      "notes": "ملاحظات"
+    },
+    "fuelTypes": {
+      "petrol": "بنزين",
+      "diesel": "ديزل",
+      "hybrid": "هايبرد",
+      "electric": "كهربائي",
+      "other": "أخرى"
+    },
+    "transmissionTypes": {
+      "automatic": "أوتوماتيك",
+      "manual": "يدوي"
+    },
+    "validation": {
+      "makeRequired": "الصنّ مطلوب",
+      "modelRequired": "الموديل مطلوب",
+      "plateRequired": "رقم اللوحة مطلوب"
+    }
+  },
+  "history": {
+    "title": "السجل الكامل",
+    "visits": "الزيارات",
+    "work": "الأعمال",
+    "status": "الحالة",
+    "noHistory": "لا يوجد سجل بعد",
+    "statuses": {
+      "pending": "قيد الانتظار",
+      "in_progress": "قيد التنفيذ",
+      "completed": "مكتمل",
+      "cancelled": "ملغي"
+    }
+  }
+}

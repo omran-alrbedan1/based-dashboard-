@@ -1,0 +1,88 @@
+{
+  "title": "Customers",
+  "subtitle": "Manage customer profiles and vehicles",
+  "addCustomer": "Add Customer",
+  "editCustomer": "Edit Customer",
+  "searchPlaceholder": "Search by name, phone, plate, VIN...",
+  "noResults": "No matching customers found",
+  "createdAt": "Created At",
+  "updatedAt": "Last Updated",
+  "empty": "No customers registered yet",
+  "details": "Customer Details",
+  "backToList": "Back to List",
+  "fields": {
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "notes": "Notes"
+  },
+  "validation": {
+    "nameRequired": "Name is required",
+    "nameMin": "Name must be at least 3 characters",
+    "phoneRequired": "Phone number is required",
+    "phoneInvalid": "Invalid phone number",
+    "emailInvalid": "Invalid email address"
+  },
+  "filter": {
+    "name": "Name",
+    "phone": "Phone",
+    "plateNumber": "Plate Number",
+    "vin": "VIN",
+    "make": "Make",
+    "model": "Model"
+  },
+  "table": {
+    "name": "Name",
+    "phone": "Phone",
+    "vehicles": "Vehicles",
+    "createdAt": "Created At",
+    "actions": "Actions"
+  },
+  "vehicles": {
+    "title": "Vehicles",
+    "addVehicle": "Add Vehicle",
+    "noVehicles": "No vehicles for this customer",
+    "fields": {
+      "make": "Make",
+      "model": "Model",
+      "plateNumber": "Plate Number",
+      "vin": "VIN",
+      "year": "Year",
+      "mileage": "Mileage (km)",
+      "fuelType": "Fuel Type",
+      "transmissionType": "Transmission",
+      "color": "Color",
+      "notes": "Notes"
+    },
+    "fuelTypes": {
+      "petrol": "Petrol",
+      "diesel": "Diesel",
+      "hybrid": "Hybrid",
+      "electric": "Electric",
+      "other": "Other"
+    },
+    "transmissionTypes": {
+      "automatic": "Automatic",
+      "manual": "Manual"
+    },
+    "validation": {
+      "makeRequired": "Make is required",
+      "modelRequired": "Model is required",
+      "plateRequired": "Plate number is required"
+    }
+  },
+  "history": {
+    "title": "Complete History",
+    "visits": "Visits",
+    "work": "Work",
+    "status": "Status",
+    "noHistory": "No history yet",
+    "statuses": {
+      "pending": "Pending",
+      "in_progress": "In Progress",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    }
+  }
+}

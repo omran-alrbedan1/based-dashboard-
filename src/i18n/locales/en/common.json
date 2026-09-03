@@ -1,0 +1,89 @@
+{
+  "sidebar": {
+    "sections": {
+      "main": "Main Menu",
+      "account": "Account"
+    },
+    "menu": {
+      "home": "Home",
+      "customers": "Customers",
+      "maintenance": "Maintenance",
+      "profile": "Profile",
+      "settings": "Settings",
+      "logout": "Logout"
+    }
+  },
+  "auth": {
+    "login": "Login",
+    "welcomeBack": "Welcome back!",
+    "loginSubtitle": "Enter your details to access the dashboard",
+    "email": "Email",
+    "password": "Password",
+    "emailPlaceholder": "name@example.com",
+    "passwordPlaceholder": "••••••••••",
+    "loggingIn": "Logging in...",
+    "loginError": "Unable to login. Please check your credentials.",
+    "logout": "Logout"
+  },
+  "header": {
+    "adminUser": "Admin User",
+    "administrator": "Administrator",
+    "notifications": "Notifications"
+  },
+  "dashboard": {
+    "welcome": "Welcome to Red Power",
+    "subtitle": "Workshop Management Dashboard",
+    "statCards": {
+      "openCards": "Open Cards",
+      "todayVisits": "Today's Visits",
+      "pendingWork": "Pending Work",
+      "completedThisWeek": "Completed This Week",
+      "vsLastMonth": "vs last month: {{value}}"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "noData": "No data available",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "actions": "Actions",
+    "status": "Status",
+    "date": "Date",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "confirm": "Confirm",
+    "close": "Close",
+    "filters": "Filters",
+    "active": "active",
+    "activeFilters": "Active filters:",
+    "reset": "Reset",
+    "apply": "Apply",
+    "table": {
+      "showing": "Showing {{from}} to {{to}} of {{total}} results",
+      "noData": "No data"
+    }
+  },
+  "maintenance": {
+    "title": "Maintenance",
+    "subtitle": "Receipt cards and work items",
+    "empty": "No maintenance cards yet",
+    "newCard": "New Card"
+  },
+  "profile": {
+    "title": "Profile",
+    "subtitle": "Staff Information"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "System Settings"
+  }
+}

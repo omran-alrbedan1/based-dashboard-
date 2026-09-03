@@ -2,25 +2,14 @@ import React, { useEffect } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import {
-  Home,
-  DollarSign,
+  LayoutDashboard,
   Users,
-  ShoppingCart,
-  Truck,
-  FileText,
-  Video,
-  Heart,
+  Wrench,
+  UserCircle,
   Settings,
-  HelpCircle,
-  Store,
-  ClipboardList,
-  BookOpen,
-  MessageCircle,
   X,
-  ShoppingBag,
-  ChevronDown,
+  Wrench as WrenchIcon,
 } from "lucide-react"
-import { images } from "@/constants/images"
 
 interface MenuItem {
   titleKey: string
@@ -31,52 +20,14 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  { titleKey: "sidebar.menu.dashboard", path: "/", icon: Home },
-  { titleKey: "sidebar.menu.users", path: "/users", icon: Users },
-  {
-    titleKey: "sidebar.menu.vendorsGroup",
-    icon: Store,
-    children: [
-      { titleKey: "sidebar.menu.vendors", path: "/vendors", icon: Store, notifs: 3 },
-      { titleKey: "sidebar.menu.vendorsApproval", path: "/admin/vendor-approval", icon: ClipboardList },
-    ],
-  },
-  {
-    titleKey: "sidebar.menu.productsGroup",
-    icon: ShoppingCart,
-    children: [
-      { titleKey: "sidebar.menu.products", path: "/products", icon: ShoppingCart, notifs: 12 },
-      { titleKey: "sidebar.menu.productsApproval", path: "/admin/product-approval", icon: ClipboardList },
-    ],
-  },
-  { titleKey: "sidebar.menu.paymentsMonitoring", path: "/payments", icon: DollarSign },
-  { titleKey: "sidebar.menu.orders", path: "/orders", icon: ShoppingBag },
-  {
-    titleKey: "sidebar.menu.driversGroup",
-    icon: Truck,
-    children: [
-      { titleKey: "sidebar.menu.drivers", path: "/drivers", icon: Truck },
-      { titleKey: "sidebar.menu.driversApproval", path: "/admin/driver-approval", icon: ClipboardList },
-    ],
-  },
+  { titleKey: "sidebar.menu.home", path: "/", icon: LayoutDashboard },
+  { titleKey: "sidebar.menu.customers", path: "/customers", icon: Users },
+  { titleKey: "sidebar.menu.maintenance", path: "/maintenance", icon: Wrench, notifs: 3 },
 ]
 
-const contentItems: MenuItem[] = [
-  { titleKey: "sidebar.menu.articles", path: "/content/articles", icon: FileText },
-  { titleKey: "sidebar.menu.videos", path: "/content/videos", icon: Video },
-  { titleKey: "sidebar.menu.guides", path: "/content/guides", icon: BookOpen },
-]
-
-const communityItems: MenuItem[] = [
-  { titleKey: "sidebar.menu.posts", path: "/community/posts", icon: MessageCircle, notifs: 5 },
-  { titleKey: "sidebar.menu.reports", path: "/community/reports", icon: Heart },
-]
-
-const reportItems: MenuItem[] = [
-  { titleKey: "sidebar.menu.sales", path: "/reports/sales", icon: DollarSign },
-  { titleKey: "sidebar.menu.vendors", path: "/reports/vendors", icon: Store },
-  { titleKey: "sidebar.menu.delivery", path: "/reports/delivery", icon: Truck },
-  { titleKey: "sidebar.menu.users", path: "/reports/users", icon: Users },
+const accountItems: MenuItem[] = [
+  { titleKey: "sidebar.menu.profile", path: "/profile", icon: UserCircle },
+  { titleKey: "sidebar.menu.settings", path: "/settings", icon: Settings },
 ]
 
 interface SidebarProps {
@@ -98,10 +49,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, isMobile = false, onCl
     }
 
     document.addEventListener('keydown', handleEsc)
-    
+
     // Prevent body scroll when mobile menu is open
     document.body.style.overflow = 'hidden'
-    
+
     return () => {
       document.removeEventListener('keydown', handleEsc)
       document.body.style.overflow = 'unset'
@@ -136,7 +87,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, isMobile = false, onCl
     }
 
     window.addEventListener('closeMobileMenu', handleCloseEvent)
-    
+
     return () => {
       window.removeEventListener('closeMobileMenu', handleCloseEvent)
     }
@@ -146,8 +97,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, isMobile = false, onCl
     <>
       {/* Mobile Sidebar Overlay */}
       {isMobile && isOpen && (
-        <div 
-          className="fixed inset-0 z-40 bg-black/50 transition-opacity duration-300"
+        <div
+          className="fixed inset-0 z-40 bg-black/70 transition-opacity duration-300"
           onClick={onClose}
         />
       )}
@@ -155,8 +106,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, isMobile = false, onCl
       {/* Mobile Sidebar (Drawer) */}
       {isMobile && (
         <div
-          className={`mobile-sidebar-content fixed inset-y-0 left-0 z-50 transform transition-transform duration-300 ease-in-out ${
-            isVisible ? "translate-x-0" : "-translate-x-full"
+          className={`mobile-sidebar-content fixed inset-y-0 start-0 z-50 transform transition-transform duration-300 ease-in-out ${
+            isVisible ? "translate-x-0" : "-translate-x-full rtl:translate-x-full"
           }`}
         >
           <SidebarContent open={true} isMobile={true} onClose={onClose} />
@@ -182,14 +133,14 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ open, isMobile, onClose
   return (
     <nav
       className={`relative flex h-screen flex-col shrink-0 w-64 bg-background-card shadow-lg ${
-        isMobile ? "shadow-xl" : "border-r border-border"
+        isMobile ? "shadow-xl" : "border-e border-border"
       }`}
     >
       {/* Close button for mobile */}
       {isMobile && (
         <button
           onClick={onClose}
-          className="absolute right-3 top-3 z-10 rounded-lg p-2 text-text-secondary hover:bg-background-secondary transition-colors"
+          className="absolute end-3 top-3 z-10 rounded-lg p-2 text-text-secondary hover:bg-background-secondary transition-colors"
           aria-label="Close menu"
         >
           <X className="h-5 w-5" />
@@ -203,78 +154,12 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ open, isMobile, onClose
           <div className="px-3 py-2 text-xs font-medium text-text-muted uppercase tracking-wide">
             {t("sidebar.sections.main")}
           </div>
-          {menuItems.map((item) =>
-            item.children ? (
-              <GroupOption
-                key={item.titleKey}
-                Icon={item.icon}
-                titleKey={item.titleKey}
-                childrenItems={item.children}
-                currentPath={location.pathname}
-                isMobile={isMobile}
-                onClose={onClose}
-              />
-            ) : (
-              <Option
-                key={item.path}
-                Icon={item.icon}
-                titleKey={item.titleKey}
-                path={item.path!}
-                currentPath={location.pathname}
-                notifs={item.notifs}
-                isMobile={isMobile}
-                onClose={onClose}
-              />
-            )
-          )}
-        </div>
-
-        <div className="space-y-1 mb-6">
-          <div className="px-3 py-2 text-xs font-medium text-text-muted uppercase tracking-wide">
-            {t("sidebar.sections.content")}
-          </div>
-          {contentItems.map((item) => (
+          {menuItems.map((item) => (
             <Option
               key={item.path}
               Icon={item.icon}
               titleKey={item.titleKey}
-              path={item.path}
-              currentPath={location.pathname}
-              notifs={item.notifs}
-              isMobile={isMobile}
-              onClose={onClose}
-            />
-          ))}
-        </div>
-
-        <div className="space-y-1 mb-6">
-          <div className="px-3 py-2 text-xs font-medium text-text-muted uppercase tracking-wide">
-            {t("sidebar.sections.community")}
-          </div>
-          {communityItems.map((item) => (
-            <Option
-              key={item.path}
-              Icon={item.icon}
-              titleKey={item.titleKey}
-              path={item.path}
-              currentPath={location.pathname}
-              notifs={item.notifs}
-              isMobile={isMobile}
-              onClose={onClose}
-            />
-          ))}
-        </div>
-
-        <div className="space-y-1 mb-6">
-          <div className="px-3 py-2 text-xs font-medium text-text-muted uppercase tracking-wide">
-            {t("sidebar.sections.reports")}
-          </div>
-          {reportItems.map((item) => (
-            <Option
-              key={item.path}
-              Icon={item.icon}
-              titleKey={item.titleKey}
-              path={item.path}
+              path={item.path!}
               currentPath={location.pathname}
               notifs={item.notifs}
               isMobile={isMobile}
@@ -287,22 +172,17 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ open, isMobile, onClose
           <div className="px-3 py-2 text-xs font-medium text-text-muted uppercase tracking-wide">
             {t("sidebar.sections.account")}
           </div>
-          <Option 
-            Icon={Settings} 
-            titleKey="sidebar.menu.settings" 
-            path="/settings" 
-            currentPath={location.pathname} 
-            isMobile={isMobile}
-            onClose={onClose}
-          />
-          <Option 
-            Icon={HelpCircle} 
-            titleKey="sidebar.menu.help_support" 
-            path="/help" 
-            currentPath={location.pathname} 
-            isMobile={isMobile}
-            onClose={onClose}
-          />
+          {accountItems.map((item) => (
+            <Option
+              key={item.path}
+              Icon={item.icon}
+              titleKey={item.titleKey}
+              path={item.path!}
+              currentPath={location.pathname}
+              isMobile={isMobile}
+              onClose={onClose}
+            />
+          ))}
         </div>
       </div>
     </nav>
@@ -342,8 +222,8 @@ const Option: React.FC<OptionProps> = ({ Icon, titleKey, path, currentPath, noti
       onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleClick()}
       className={`cursor-pointer relative flex h-11 w-full items-center rounded-md transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-ring ${
         isSelected
-          ? "bg-gradient-primary text-white shadow-md"
-          : "text-text-secondary hover:bg-background-secondary hover:text-text"
+          ? "bg-primary text-white shadow-[0_0_18px_rgba(225,6,19,0.25)]"
+          : "text-text-secondary hover:bg-background-secondary hover:text-text-primary"
       }`}
     >
       <div className="grid h-full w-12 place-content-center">
@@ -354,72 +234,12 @@ const Option: React.FC<OptionProps> = ({ Icon, titleKey, path, currentPath, noti
         {t(titleKey)}
       </span>
 
-      {notifs && (
-        <span className={`absolute right-3 flex h-5 w-5 items-center justify-center rounded-full text-xs font-medium ${
-          isSelected ? 'bg-white text-primary' : 'bg-primary text-text-on-primary'
+      {notifs !== undefined && notifs > 0 && (
+        <span className={`absolute end-3 flex h-5 w-5 items-center justify-center rounded-full text-xs font-medium ${
+          isSelected ? 'bg-white text-primary' : 'bg-primary text-white'
         }`}>
           {notifs}
         </span>
-      )}
-    </div>
-  )
-}
-
-interface GroupOptionProps {
-  Icon: any
-  titleKey: string
-  childrenItems: MenuItem[]
-  currentPath: string
-  isMobile?: boolean
-  onClose?: () => void
-}
-
-const GroupOption: React.FC<GroupOptionProps> = ({ Icon, titleKey, childrenItems, currentPath, isMobile, onClose }) => {
-  const [expanded, setExpanded] = React.useState(
-    childrenItems.some((child) =>
-      child.path === "/"
-        ? currentPath === "/"
-        : child.path
-          ? currentPath === child.path || currentPath.startsWith(`${child.path}/`)
-          : false
-    )
-  )
-  const { t } = useTranslation()
-
-  return (
-    <div className="space-y-1">
-      <div
-        role="button"
-        tabIndex={0}
-        onClick={() => setExpanded((prev) => !prev)}
-        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setExpanded((prev) => !prev)}
-        className={`cursor-pointer relative flex h-11 w-full items-center rounded-md transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-ring text-text-secondary hover:bg-background-secondary hover:text-text`}
-      >
-        <div className="grid h-full w-12 place-content-center">
-          <Icon className="h-4 w-4 text-primary" />
-        </div>
-        <span className="text-sm font-medium flex-1">{t(titleKey)}</span>
-        <ChevronDown
-          className={`mr-3 h-4 w-4 text-text-muted transition-transform duration-200 ${
-            expanded ? 'rotate-0' : '-rotate-90'
-          }`}
-        />
-      </div>
-      {expanded && (
-        <div className="ml-4 mb-4 space-y-0.5">
-          {childrenItems.map((child) => (
-            <Option
-              key={child.path}
-              Icon={child.icon}
-              titleKey={child.titleKey}
-              path={child.path!}
-              currentPath={currentPath}
-              notifs={child.notifs}
-              isMobile={isMobile}
-              onClose={onClose}
-            />
-          ))}
-        </div>
       )}
     </div>
   )
@@ -444,13 +264,15 @@ const TitleSection: React.FC<TitleSectionProps> = ({ isMobile, onClose }) => {
     <div className="mb-6 border-b border-border pb-4 px-2">
       <div
         onClick={handleClick}
-        className="flex cursor-pointer items-center justify-center rounded-md p-2 transition-colors hover:bg-background-secondary"
+        className="flex cursor-pointer items-center justify-center gap-2 rounded-md p-2 transition-colors hover:bg-background-secondary"
       >
-        <img
-          src={images.logo}
-          alt='Beyond Gluten Logo'
-          className='h-16 w-auto'
-        />
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary shadow-[0_0_26px_rgba(225,6,19,0.3)]">
+          <WrenchIcon className="h-5 w-5 text-white" />
+        </div>
+        <div className="flex flex-col">
+          <span className="text-lg font-bold text-text-primary leading-tight">Red Power</span>
+          <span className="text-xs text-text-muted">لوحة التحكم</span>
+        </div>
       </div>
     </div>
   )

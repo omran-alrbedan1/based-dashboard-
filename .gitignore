@@ -27,3 +27,11 @@ dist-ssr
 # Markdown files
 *.md
 tasks.txt
+
+# Checked-in project governance and migration guidance
+!AGENTS.md
+!docs/
+!docs/RED_POWER_MIGRATION_PLAN.md
+!.agents/
+!.agents/skills/
+!.agents/skills/**

@@ -1,0 +1,156 @@
+{
+  "title": "Maintenance",
+  "subtitle": "Receipt cards and work items",
+  "addCard": "New Card",
+  "empty": "No maintenance cards yet",
+  "newCard": "New Card",
+  "details": "Card Details",
+  "backToList": "Back to List",
+  "receiptNumber": "Receipt Number",
+  "createdAt": "Created At",
+  "status": "Status",
+  "totalCost": "Total",
+  "save": "Save Card",
+  "saving": "Saving...",
+  "statuses": {
+    "draft": "Draft",
+    "open": "Open",
+    "in_progress": "In Progress",
+    "waiting_parts": "Waiting Parts",
+    "ready_for_delivery": "Ready for Delivery",
+    "closed": "Closed",
+    "cancelled": "Cancelled"
+  },
+  "sections": {
+    "header": "Card Information",
+    "customer": "Customer",
+    "vehicle": "Vehicle",
+    "reason": "Visit Reason",
+    "condition": "Condition at Receipt",
+    "itemsLeft": "Items Left in the Car",
+    "work": "Work & Estimate",
+    "approval": "Approval & Delivery"
+  },
+  "customer": {
+    "title": "Customer",
+    "select": "Select Customer",
+    "create": "New Customer",
+    "name": "Customer Name",
+    "phone": "Phone",
+    "email": "Email",
+    "noSelection": "Select a customer"
+  },
+  "vehicle": {
+    "title": "Vehicle",
+    "select": "Select Vehicle",
+    "create": "New Vehicle",
+    "make": "Make",
+    "model": "Model",
+    "plateNumber": "Plate Number",
+    "year": "Year",
+    "vin": "VIN",
+    "mileage": "Mileage (km)",
+    "fuelType": "Fuel Type",
+    "transmissionType": "Transmission",
+    "noSelection": "Select a vehicle",
+    "fuel_type": {
+      "petrol": "Petrol",
+      "diesel": "Diesel",
+      "hybrid": "Hybrid",
+      "electric": "Electric",
+      "other": "Other"
+    },
+    "transmission_type": {
+      "automatic": "Automatic",
+      "manual": "Manual"
+    }
+  },
+  "reason": {
+    "title": "Visit Reason",
+    "options": {
+      "oil_change": "Oil Change",
+      "diagnostics": "Diagnostics",
+      "periodic_service": "Periodic Service",
+      "repair": "Repair",
+      "tires": "Tires",
+      "brakes": "Brakes",
+      "other": "Other"
+    },
+    "otherReason": "Reason (Other)",
+    "complaint": "Customer Complaint / Notes"
+  },
+  "condition": {
+    "title": "Condition at Receipt",
+    "fuelLevel": "Fuel Level",
+    "fuelLevels": {
+      "empty": "Empty",
+      "quarter": "Quarter",
+      "half": "Half",
+      "three_quarters": "Three Quarters",
+      "full": "Full"
+    },
+    "externalCondition": "External Condition",
+    "warningLights": "Warning Lights On",
+    "tires": "Tires",
+    "battery": "Battery",
+    "glass": "Glass",
+    "body": "Body",
+    "otherNotes": "Other Notes",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "itemsLeft": {
+    "title": "Items Left in the Car",
+    "add": "Add Item",
+    "placeholder": "Type an item then add it"
+  },
+  "work": {
+    "title": "Work & Estimate",
+    "description": "Work Description",
+    "estimate": "Estimated Cost",
+    "quantity": "Quantity",
+    "progress": "Progress",
+    "assignee": "Assignee",
+    "status": "Status",
+    "required": "Required",
+    "total": "Total",
+    "addRow": "Add Work Item",
+    "noWork": "No work items yet",
+    "statuses": {
+      "pending": "Pending",
+      "in_progress": "In Progress",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "approval": {
+    "title": "Approval & Delivery",
+    "approved": "Customer Approval",
+    "notApproved": "Awaiting Approval",
+    "amount": "Approved Amount",
+    "deliveryDate": "Expected Delivery Date",
+    "deliveryTime": "Delivery Time",
+    "receiver": "Receiver / Technician"
+  },
+  "validation": {
+    "customerNameRequired": "Customer name is required",
+    "customerPhoneRequired": "Customer phone is required",
+    "plateRequired": "Vehicle plate is required",
+    "makeRequired": "Vehicle make is required",
+    "modelRequired": "Vehicle model is required",
+    "reasonRequired": "Visit reason is required",
+    "workDescriptionRequired": "Work description is required",
+    "estimateNegative": "Estimated cost must be positive",
+    "emailInvalid": "Invalid email address"
+  },
+  "list": {
+    "noResults": "No matching cards",
+    "customer": "Customer",
+    "vehicle": "Vehicle"
+  },
+  "filter": {
+    "title": "Filter Cards",
+    "status": "Status",
+    "createdAt": "Created At"
+  }
+}
